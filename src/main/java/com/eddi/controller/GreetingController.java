@@ -1,4 +1,4 @@
-package com.eddi;
+package com.eddi.controller;
 
 import com.eddi.model.Employee;
 import com.eddi.repository.EmployeeRepo;

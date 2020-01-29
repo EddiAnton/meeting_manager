@@ -1,4 +1,4 @@
-package com.eddi.domain;
+package com.eddi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
