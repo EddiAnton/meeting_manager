@@ -24,7 +24,6 @@ public class Meeting {
     @Column(name = "organizedEmployee")
     Employee organizedEmployee;
 
-    @Column(name = "participants")
     List<Employee> participants;
 
     public Integer getMeetingID() {
