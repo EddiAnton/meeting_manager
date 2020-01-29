@@ -1,21 +1,30 @@
 package com.eddi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "meeting")
 public class Meeting {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "meetingID")
     Integer meetingID;
+
+    @Column(name = "dateSpending")
     Date dateSpending;
+
+    @Column(name = "topic")
     String topic;
+
+    @Column(name = "meetingOrganizer")
     Department meetingOrganizer;
+
+    @Column(name = "organizedEmployee")
     Employee organizedEmployee;
+
+    @Column(name = "participants")
     List<Employee> participants;
 
     public Integer getMeetingID() {
