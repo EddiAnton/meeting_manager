@@ -14,7 +14,7 @@ public class Department {
     @Column(name = "departmentName")
     String departmentName;
 
-    List<Employee> departmentEmployee;
+   // List<Employee> departmentEmployee;
 
     public Integer getDepID() {
         return depID;
@@ -32,11 +32,11 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public List<Employee> getDepartmentEmployee() {
+   /* public List<Employee> getDepartmentEmployee() {
         return departmentEmployee;
     }
 
     public void setDepartmentEmployee(List<Employee> departmentEmployee) {
         this.departmentEmployee = departmentEmployee;
-    }
+    }*/
 }

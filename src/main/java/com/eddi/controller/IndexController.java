@@ -8,15 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("index")
 public class IndexController {
 
     @Autowired
     private MeetingService meetingService;
 
-    @RequestMapping("/index")
-    public String indexPage(Model model) {
-        model.addAttribute("message", "Start page.");
+    @RequestMapping
+    public String indexPageSearch(Model model) {
+        model.addAttribute("message", "Search");
         return "index";
     }
 

@@ -18,14 +18,14 @@ public class Meeting {
     @Column(name = "topic")
     String topic;
 
-    @Column(name = "meetingOrganizer")
+    /*@Column(name = "meetingOrganizer")
     Department meetingOrganizer;
 
     @Column(name = "organizedEmployee")
     Employee organizedEmployee;
 
     List<Employee> participants;
-
+    */
     public Integer getMeetingID() {
         return meetingID;
     }
@@ -50,7 +50,7 @@ public class Meeting {
         this.topic = topic;
     }
 
-    public Department getMeetingOrganizer() {
+    /*public Department getMeetingOrganizer() {
         return meetingOrganizer;
     }
 
@@ -73,4 +73,5 @@ public class Meeting {
     public void setParticipants(List<Employee> participants) {
         this.participants = participants;
     }
+    */
 }
