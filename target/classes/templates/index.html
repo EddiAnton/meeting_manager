@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+          <h2>Обзор проведенных совещаний</h2>
+        </div>
+        <div class="base-form">
+            <form action="#">
+               <div class="row">
+                    <div class="col">
+                        <p>Тема: <input class="myinput" type="text" size="40" placeholder="Введите тему совещания"></p>
+                    </div>
+                    <div class="col">
+                        <p>Подразделение: <input class="myinput" type="email" size="30" placeholder="Введите подразделение"></p>
+                    </div>
+                  </div>
+                <div class="form-group">
+                   <div class="row">
+                        <div class="col">
+                            <label>Время проведения с:</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>по:</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                
+                <p>С участием: <input class="myinput" type="email" size="30" placeholder="Введите фамилию участника"></p>
+                <input class="btn btn-dark" type="submit" value="Применить фильтр">
+                <input class="btn btn-dark" type="submit" value="Показать все">
+            </form>
+            <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Дата Время</th>
+        <th>Тема</th>
+        <th>Подразделение</th>
+        <th>Ответственный</th>
+        <th>Состав</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+            <button type="button" class="btn btn-dark">Добавить новое совещание</button>
+        </div>
+        <div class="footer">
+            <hr>
+            <p>All rights reserved &copy;&nbsp;2019</p>
+        </div>
+    </div>     
+</body>
+</html>
