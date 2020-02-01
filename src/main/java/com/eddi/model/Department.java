@@ -17,12 +17,12 @@ public class Department {
     @OneToMany(mappedBy = "department")
     List<Employee> employees;
 
-    public Integer getDepID() {
+    public Integer getId() {
         return id;
     }
 
-    public void setDepID(Integer depID) {
-        this.id = depID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDepartmentName() {
