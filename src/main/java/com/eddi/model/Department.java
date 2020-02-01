@@ -8,20 +8,21 @@ import java.util.List;
 public class Department {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "depID")
-    Integer depID;
+    @Column(name = "id")
+    Integer id;
 
     @Column(name = "departmentName")
     String departmentName;
 
-   // List<Employee> departmentEmployee;
+    @OneToMany(mappedBy = "department")
+    List<Employee> employees;
 
     public Integer getDepID() {
-        return depID;
+        return id;
     }
 
     public void setDepID(Integer depID) {
-        this.depID = depID;
+        this.id = depID;
     }
 
     public String getDepartmentName() {
@@ -32,11 +33,11 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-   /* public List<Employee> getDepartmentEmployee() {
-        return departmentEmployee;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setDepartmentEmployee(List<Employee> departmentEmployee) {
-        this.departmentEmployee = departmentEmployee;
-    }*/
+    public void setEmployees(List<Employee> departmentEmployee) {
+        this.employees = departmentEmployee;
+    }
 }
