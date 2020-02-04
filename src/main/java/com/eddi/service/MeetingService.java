@@ -5,6 +5,7 @@ import com.eddi.repository.MeetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Spliterator;
@@ -19,8 +20,9 @@ public class MeetingService {
     private MeetingRepo meetingRepo;
 
     public void save(Meeting meeting) {
-        Meeting savedMeeting = meetingRepo.save(meeting);
-        System.out.println(savedMeeting.getMeetingID());
+        meetingRepo.save(meeting);
+
+        System.out.println(meeting);
     }
 
     public List<Meeting> getAll() {

@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("index")
-public class IndexController {
+@RequestMapping("/search_page")
+public class SearchPageController {
 
     @Autowired
     private MeetingService meetingService;
 
     @RequestMapping
-    public String indexPageSearch(Model model) {
-        model.addAttribute("message", "Search");
-        return "index";
+    public String mainPage(Model model) {
+        model.addAttribute("message", "MainPage");
+        return "search_page";
     }
 
-    @RequestMapping("/create")
+    @RequestMapping(value = "/create_page")
     public String createPage(Model model) {
         model.addAttribute("meeting", new Meeting());
-        return "create";
+        return "create_page";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create_page/submit", method = RequestMethod.POST)
     public String submitMeeting(@ModelAttribute Meeting meeting) {
         meetingService.save(meeting);
         return "redirect:../";

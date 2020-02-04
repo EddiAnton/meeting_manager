@@ -12,16 +12,16 @@
           <h2>Данные о совещании</h2>
         </div>
         <div class="base-form">
-            <form action="#" th:action="@{/create}" th:object="${meeting}" method="post">
+            <form action="#" th:action="@{/create_page}" th:object="${meeting}" method="post">
                 <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"
                                 id="topic" th:field="#{topic}"></p>
                 <div class="form-group">
                     <label>Время проведения:</label>
                     <input type="date" size="40" class="form-control" id="dateSpending" th:field="#{dateSpending}">
                 </div>
-                <p>Подразделение: <input type="email" size="30" placeholder="Введите подразделение"
+                <p>Подразделение: <input type="text" size="30" placeholder="Введите подразделение"
                 id="meetingOrganizer" th:field="#{meetingOrganizer}"></p>
-                <p>Ответственный: <input type="email" size="30" placeholder="Введите фамилию участника"
+                <p>Ответственный: <input type="text" size="30" placeholder="Введите фамилию участника"
                 id="organizedEmployee" th:field="#{organizedEmployee}"></p>
             <table class="table table-striped">
                 <thead>
@@ -45,15 +45,9 @@
                     <td></td>
                     <td>Удалить</td>
                   </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Удалить</td>
-                  </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-dark">Добавить</button>
+            <button type="button" class="btn btn-dark">Добавить участника</button>
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Не сохранять">
             </form>
