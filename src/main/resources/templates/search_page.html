@@ -12,7 +12,7 @@
           <h2>Обзор проведенных совещаний</h2>
         </div>
         <div class="base-form">
-            <form action="#" th:action="@{/index}" th:object="${meeting}" method="get">
+            <form action="#" th:action="@{/search_page}" th:object="${meeting}" method="get">
                <div class="row">
                     <div class="col">
                         <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"></p>
@@ -63,16 +63,9 @@
         <td></td>
         <td></td>
       </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
     </tbody>
   </table>
-            <a class="btn btn-dark" href="/create">Добавить новое совещание</a>
+            <a class="btn btn-dark" href="/create_page">Добавить новое совещание</a>
         </div>
         <div class="footer">
             <hr>
