@@ -12,17 +12,17 @@
           <h2>Данные о совещании</h2>
         </div>
         <div class="base-form">
-            <form action="#" th:action="@{/create_page}" th:object="${meeting}" method="post">
+            <form action="#" th:action="@{/create_page/submit}" th:object="${meeting}" method="post">
                 <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"
-                                id="topic" th:field="#{topic}"></p>
+                                id="topic" th:field="*{topic}"></p>
                 <div class="form-group">
                     <label>Время проведения:</label>
-                    <input type="date" size="40" class="form-control" id="dateSpending" th:field="#{dateSpending}">
+                    <input type="date" size="40" class="form-control" id="date_spending" th:field="*{date_spending}">
                 </div>
                 <p>Подразделение: <input type="text" size="30" placeholder="Введите подразделение"
-                id="meetingOrganizer" th:field="#{meetingOrganizer}"></p>
+                id="meeting_organizer" th:field="*{meeting_organizer}"></p>
                 <p>Ответственный: <input type="text" size="30" placeholder="Введите фамилию участника"
-                id="organizedEmployee" th:field="#{organizedEmployee}"></p>
+                id="organized_employee" th:field="*{organized_employee}"></p>
             <table class="table table-striped">
                 <thead>
                   <tr>

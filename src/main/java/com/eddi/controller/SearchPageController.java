@@ -18,7 +18,7 @@ public class SearchPageController {
 
     @RequestMapping
     public String mainPage(Model model) {
-        model.addAttribute("message", "MainPage");
+        //model.addAttribute("message", "MainPage");
         return "search_page";
     }
 

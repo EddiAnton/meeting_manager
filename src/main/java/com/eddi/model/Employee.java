@@ -21,8 +21,8 @@ public class Employee {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "dateOfBirth")
-    private Date dateOfBirth;
+    @Column(name = "date_of_birth")
+    private Date date_of_birth;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -53,10 +53,10 @@ public class Employee {
     }
 
     public Date getDateOfBirth() {
-        return dateOfBirth;
+        return date_of_birth;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+        this.date_of_birth = dateOfBirth;
     }
 }

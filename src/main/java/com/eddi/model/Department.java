@@ -17,8 +17,8 @@ public class Department {
     @Column(name = "id")
     Integer id;
 
-    @Column(name = "departmentName")
-    String departmentName;
+    @Column(name = "department_name")
+    String department_name;
 
     @OneToMany(mappedBy = "department")
     List<Employee> employees;
@@ -32,11 +32,11 @@ public class Department {
     }
 
     public String getDepartmentName() {
-        return departmentName;
+        return department_name;
     }
 
     public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+        this.department_name = departmentName;
     }
 
     public List<Employee> getEmployees() {

@@ -14,37 +14,37 @@ import java.util.List;
 public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "meetingID")
-    Integer meetingID;
+    @Column(name = "id")
+    Integer id;
 
-    @Column(name = "dateSpending")
-    Date dateSpending;
+    @Column(name = "date_spending")
+    Date date_spending;
 
     @Column(name = "topic")
     String topic;
 
-    /*@Column(name = "meetingOrganizer")
-    Department meetingOrganizer;
+    @Column(name = "meeting_organizer")
+    Integer meeting_organizer;
 
-    @Column(name = "organizedEmployee")
-    Employee organizedEmployee;
-
+    @Column(name = "organized_employee")
+    String organized_employee;
+    /*
     List<Employee> participants;
     */
-    public Integer getMeetingID() {
-        return meetingID;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMeetingID(Integer meetingID) {
-        this.meetingID = meetingID;
+    public void setId(Integer meetingID) {
+        this.id = meetingID;
     }
 
     public Date getDateSpending() {
-        return dateSpending;
+        return date_spending;
     }
 
     public void setDateSpending(Date dateSpending) {
-        this.dateSpending = dateSpending;
+        this.date_spending = dateSpending;
     }
 
     public String getTopic() {
@@ -55,23 +55,23 @@ public class Meeting {
         this.topic = topic;
     }
 
-    /*public Department getMeetingOrganizer() {
-        return meetingOrganizer;
+    public Integer getMeetingOrganizer() {
+        return meeting_organizer;
     }
 
-    public void setMeetingOrganizer(Department meetingOrganizer) {
-        this.meetingOrganizer = meetingOrganizer;
+    public void setMeetingOrganizer(Integer meetingOrganizer) {
+        this.meeting_organizer = meetingOrganizer;
     }
 
-    public Employee getOrganizedEmployee() {
-        return organizedEmployee;
+    public String getOrganizedEmployee() {
+        return organized_employee;
     }
 
-    public void setOrganizedEmployee(Employee organizedEmployee) {
-        this.organizedEmployee = organizedEmployee;
+    public void setOrganizedEmployee(String organizedEmployee) {
+        this.organized_employee = organizedEmployee;
     }
 
-    public List<Employee> getParticipants() {
+    /*public List<Employee> getParticipants() {
         return participants;
     }
 
