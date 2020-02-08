@@ -18,16 +18,16 @@ public class Meeting {
     Integer id;
 
     @Column(name = "date_spending")
-    Date date_spending;
+    Date dateSpending;
 
     @Column(name = "topic")
     String topic;
 
     @Column(name = "meeting_organizer")
-    Integer meeting_organizer;
+    String meetingOrganizer;
 
     @Column(name = "organized_employee")
-    String organized_employee;
+    String organizedEmployee;
     /*
     List<Employee> participants;
     */
@@ -40,11 +40,11 @@ public class Meeting {
     }
 
     public Date getDateSpending() {
-        return date_spending;
+        return dateSpending;
     }
 
     public void setDateSpending(Date dateSpending) {
-        this.date_spending = dateSpending;
+        this.dateSpending = dateSpending;
     }
 
     public String getTopic() {
@@ -55,20 +55,20 @@ public class Meeting {
         this.topic = topic;
     }
 
-    public Integer getMeetingOrganizer() {
-        return meeting_organizer;
+    public String getMeetingOrganizer() {
+        return meetingOrganizer;
     }
 
-    public void setMeetingOrganizer(Integer meetingOrganizer) {
-        this.meeting_organizer = meetingOrganizer;
+    public void setMeetingOrganizer(String meetingOrganizer) {
+        this.meetingOrganizer = meetingOrganizer;
     }
 
     public String getOrganizedEmployee() {
-        return organized_employee;
+        return organizedEmployee;
     }
 
     public void setOrganizedEmployee(String organizedEmployee) {
-        this.organized_employee = organizedEmployee;
+        this.organizedEmployee = organizedEmployee;
     }
 
     /*public List<Employee> getParticipants() {
