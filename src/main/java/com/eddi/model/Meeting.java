@@ -1,17 +1,16 @@
 package com.eddi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "meeting")
 public class Meeting {
+    private static final String PATTERN = "yyyy-MM-dd";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -39,12 +38,19 @@ public class Meeting {
         this.id = meetingID;
     }
 
-    public Date getDateSpending() {
-        return dateSpending;
+    public String getDateSpending() {
+        if (dateSpending != null) {
+            return new SimpleDateFormat(PATTERN).format(dateSpending);
+        }
+        return "";
     }
 
-    public void setDateSpending(Date dateSpending) {
-        this.dateSpending = dateSpending;
+    public void setDateSpending(String dateSpending) {
+        try {
+            this.dateSpending = new SimpleDateFormat(PATTERN).parse(dateSpending);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getTopic() {
