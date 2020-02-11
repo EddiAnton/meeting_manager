@@ -25,9 +25,10 @@ public class MeetingService {
         System.out.println(meeting);
     }
 
-    public List<Meeting> getAll() {
+    public List<Meeting> getAllMeeting() {
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(meetingRepo.findAll().iterator(),
-                        Spliterator.NONNULL), false).collect(Collectors.toList());
+                        Spliterator.NONNULL), false)
+                .collect(Collectors.toList());
     }
 }
