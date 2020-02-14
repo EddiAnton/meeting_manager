@@ -22,14 +22,21 @@ public class Meeting {
     @Column(name = "topic")
     String topic;
 
-    @Column(name = "meeting_organizer")
-    String meetingOrganizer;
+    @ManyToOne
+    @JoinColumn(name = "organized_department_id")
+    private Department department;
 
     @Column(name = "organized_employee")
     String organizedEmployee;
-    /*
-    List<Employee> participants;
-    */
+
+    @ManyToMany
+    @JoinTable(
+            name = "participants",
+            joinColumns = @JoinColumn(name = "meeting_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id")
+    )
+    private List<Employee> employees;
+
     public Integer getId() {
         return id;
     }
@@ -61,12 +68,12 @@ public class Meeting {
         this.topic = topic;
     }
 
-    public String getMeetingOrganizer() {
-        return meetingOrganizer;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setMeetingOrganizer(String meetingOrganizer) {
-        this.meetingOrganizer = meetingOrganizer;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public String getOrganizedEmployee() {
@@ -77,12 +84,11 @@ public class Meeting {
         this.organizedEmployee = organizedEmployee;
     }
 
-    /*public List<Employee> getParticipants() {
-        return participants;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setParticipants(List<Employee> participants) {
-        this.participants = participants;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
-    */
 }

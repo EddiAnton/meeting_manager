@@ -20,7 +20,7 @@
                     <input type="date" size="40" class="form-control" id="date_spending" th:field="*{dateSpending}">
                 </div>
                 <p>Подразделение: <input type="text" size="30" placeholder="Введите подразделение"
-                id="meeting_organizer" th:field="*{meetingOrganizer}"></p>
+                id="organized_department_id" th:field="*{department}"></p>
                 <p>Ответственный: <input type="text" size="30" placeholder="Введите фамилию участника"
                 id="organized_employee" th:field="*{organizedEmployee}"></p>
             <table class="table table-striped">
@@ -39,14 +39,13 @@
                     <td></td>
                     <td>Удалить</td>
                   </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Удалить</td>
-                  </tr>
                 </tbody>
             </table>
+                <select class="form-control">
+                    <option>Выбор участника</option>
+                    <option>Выбор участника 1</option>
+                    <option>Выбор участника 2</option>
+                </select>
             <button type="button" class="btn btn-dark">Добавить участника</button>
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Не сохранять">
@@ -57,6 +56,6 @@
             <hr>
             <p>All rights reserved &copy;&nbsp;2020</p>
         </div>
-    </div>     
+    </div>
 </body>
 </html>

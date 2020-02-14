@@ -18,16 +18,14 @@
                 <th>Тема</th>
                 <th>Подразделение</th>
                 <th>Ответственный</th>
-                <th>Состав</th>
               </tr>
             </thead>
             <tbody>
               <tr th:each="meeting: ${meetings}">
-                <td th:date="${meeting.dateSpending}"/>
+                <td th:text="${meeting.dateSpending}"/>
                 <td th:text="${meeting.topic}"/>
-                <td th:text="${meeting.meetingOrganizer}"/>
+                <td th:text="${meeting.department}"/>
                 <td th:text="${meeting.organizedEmployee}"/>
-                <td th:text="${meeting.meetingOrganizer}"/>
               </tr>
             </tbody>
           </table>
