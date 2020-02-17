@@ -15,16 +15,16 @@ public class Department {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+    private Integer id;
 
     @Column(name = "department_name")
-    String department_name;
+    private String departmentName;
 
     @OneToMany(mappedBy = "department")
-    List<Employee> employees;
+    private List<Employee> employees;
 
     @OneToMany(mappedBy = "department")
-    List<Meeting> meetings;
+    private List<Meeting> meetings;
 
     public Integer getId() {
         return id;
@@ -35,11 +35,11 @@ public class Department {
     }
 
     public String getDepartmentName() {
-        return department_name;
+        return departmentName;
     }
 
     public void setDepartmentName(String departmentName) {
-        this.department_name = departmentName;
+        this.departmentName = departmentName;
     }
 
     public List<Employee> getEmployees() {

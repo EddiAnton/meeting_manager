@@ -33,6 +33,8 @@ public class SearchPageController {
     @RequestMapping(value = "/create_page")
     public String createPage(Model model) {
         model.addAttribute("meeting", new Meeting());
+        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("departments", meetingService.getAllDepartment());
         return "create_page";
     }
 

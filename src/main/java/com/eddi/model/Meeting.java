@@ -14,20 +14,20 @@ public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+    private Integer id;
 
     @Column(name = "date_spending")
-    Date dateSpending;
+    private Date dateSpending;
 
     @Column(name = "topic")
-    String topic;
+    private String topic;
 
     @ManyToOne
     @JoinColumn(name = "organized_department_id")
     private Department department;
 
     @Column(name = "organized_employee")
-    String organizedEmployee;
+    private String organizedEmployee;
 
     @ManyToMany
     @JoinTable(

@@ -19,34 +19,29 @@
                     <label>Время проведения:</label>
                     <input type="date" size="40" class="form-control" id="date_spending" th:field="*{dateSpending}">
                 </div>
-                <p>Подразделение: <input type="text" size="30" placeholder="Введите подразделение"
-                id="organized_department_id" th:field="*{department}"></p>
-                <p>Ответственный: <input type="text" size="30" placeholder="Введите фамилию участника"
-                id="organized_employee" th:field="*{organizedEmployee}"></p>
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Имя</th>
-                    <th>Возраст</th>
-                    <th>Подразделение</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Удалить</td>
-                  </tr>
-                </tbody>
-            </table>
-                <select class="form-control">
-                    <option>Выбор участника</option>
-                    <option>Выбор участника 1</option>
-                    <option>Выбор участника 2</option>
+                <p>Подразделение: <select class="browser-default custom-select"
+                                         id="organized_department_id"
+                                         th:field="*{department}">
+                    <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
                 </select>
-            <button type="button" class="btn btn-dark">Добавить участника</button>
+                </p>
+                <p>Ответственный: <select class="browser-default custom-select"
+                                          id="organized_employee"
+                                          th:field="*{organizedEmployee}">
+                    <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
+                </select>
+                </p>
+                <p>Отметьте состав участников:</p>
+                    <table class="table table-striped">
+                        <tr th:each="employee, stat: ${employees}">
+                            <td>
+                                <input type="checkbox" th:id="${'cb_' + stat.index}" name="meeting_members" th:value="${employee.id}">
+                            </td>
+                            <td>
+                                <label th:for="${'cb_' + stat.index}" th:text="${employee.name}"/>
+                            </td>
+                        </tr>
+                    </table>
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Не сохранять">
             <a class="btn btn-dark" href="/search_page">Назад</a>
