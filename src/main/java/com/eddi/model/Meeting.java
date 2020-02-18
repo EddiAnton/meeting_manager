@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "meeting")
 public class Meeting {
-    private static final String PATTERN = "yyyy-MM-dd";
+    private static final String PATTERN = "dd-MM-yyyy HH-mm";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

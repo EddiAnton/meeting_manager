@@ -22,13 +22,13 @@
                 <p>Подразделение: <select class="browser-default custom-select"
                                          id="organized_department_id"
                                          th:field="*{department}">
-                    <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
+                    <option th:each="department : ${departments}" th:value="${department.departmentName}" th:text="${department.departmentName}"/>
                 </select>
                 </p>
                 <p>Ответственный: <select class="browser-default custom-select"
                                           id="organized_employee"
                                           th:field="*{organizedEmployee}">
-                    <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
+                    <option th:each="employee : ${employees}" th:value="${employee.name}" th:text="${employee.name}"/>
                 </select>
                 </p>
                 <p>Отметьте состав участников:</p>
@@ -39,6 +39,9 @@
                             </td>
                             <td>
                                 <label th:for="${'cb_' + stat.index}" th:text="${employee.name}"/>
+                            </td>
+                            <td>
+                                <label th:for="${'cb_' + stat.index}" th:text="${employee.department.departmentName}"/>
                             </td>
                         </tr>
                     </table>
