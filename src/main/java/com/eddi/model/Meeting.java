@@ -54,7 +54,7 @@ public class Meeting {
 
     public void setDateSpending(String dateSpending) {
         try {
-            this.dateSpending = new SimpleDateFormat(PATTERN).parse(dateSpending);
+            this.dateSpending = new SimpleDateFormat("yyyy-MM-dd").parse(dateSpending);
         } catch (ParseException e) {
             e.printStackTrace();
         }
