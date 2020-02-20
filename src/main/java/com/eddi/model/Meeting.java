@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "meeting")
 public class Meeting {
-    private static final String PATTERN = "dd-MM-yyyy HH-mm";
+    private static final String PATTERN = "yyyy-MM-dd";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +26,9 @@ public class Meeting {
     @JoinColumn(name = "organized_department_id")
     private Department department;
 
-    @Column(name = "organized_employee")
-    private String organizedEmployee;
+    @ManyToOne
+    @JoinColumn(name = "organized_employee_id")
+    private Employee organizedEmployee;
 
     @ManyToMany
     @JoinTable(
@@ -54,7 +55,7 @@ public class Meeting {
 
     public void setDateSpending(String dateSpending) {
         try {
-            this.dateSpending = new SimpleDateFormat("yyyy-MM-dd").parse(dateSpending);
+            this.dateSpending = new SimpleDateFormat(PATTERN).parse(dateSpending);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -76,11 +77,11 @@ public class Meeting {
         this.department = department;
     }
 
-    public String getOrganizedEmployee() {
+    public Employee getOrganizedEmployee() {
         return organizedEmployee;
     }
 
-    public void setOrganizedEmployee(String organizedEmployee) {
+    public void setOrganizedEmployee(Employee organizedEmployee) {
         this.organizedEmployee = organizedEmployee;
     }
 

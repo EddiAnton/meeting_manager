@@ -26,9 +26,9 @@
                 </select>
                 </p>
                 <p>Ответственный: <select class="browser-default custom-select"
-                                          id="organized_employee"
+                                          id="organized_employee_id"
                                           th:field="*{organizedEmployee}">
-                    <option th:each="employee : ${employees}" th:value="${employee.name}" th:text="${employee.name}"/>
+                    <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
                 </select>
                 </p>
                 <p>Отметьте состав участников:</p>

@@ -27,6 +27,7 @@ public class SearchPageController {
     @RequestMapping(value = "/view_meeting_list")
     public String getAllMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getAllMeeting());
+        model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         return "view_meeting_list";
     }
