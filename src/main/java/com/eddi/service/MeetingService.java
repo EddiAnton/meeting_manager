@@ -8,9 +8,6 @@ import com.eddi.repository.EmployeeRepo;
 import com.eddi.repository.MeetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLOutput;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Spliterator;
 import java.util.Spliterators;
