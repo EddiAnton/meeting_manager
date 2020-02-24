@@ -26,6 +26,8 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private List<Meeting> meetings;
 
+    public Department() {}
+
     public Integer getId() {
         return id;
     }

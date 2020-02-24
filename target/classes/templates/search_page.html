@@ -12,29 +12,28 @@
           <h2>Обзор проведенных совещаний</h2>
         </div>
         <div class="base-form">
-            <form action="#" th:action="@{/search_page}" th:object="${meeting}" method="get">
+            <form action="#" th:action="@{/search_page/submit}" method="POST">
                <div class="row">
                     <div class="col">
-                        <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"></p>
+                        <p>Тема: <input type="text" name="topic" size="40" placeholder="Введите тему совещания"></p>
                     </div>
                     <div class="col">
-                        <p>Подразделение: <input type="text" size="30" placeholder="Введите подразделение"></p>
+                        <p>Подразделение: <input type="text" name="departmentName" size="30" placeholder="Введите подразделение"></p>
                     </div>
                   </div>
                 <div class="form-group">
                    <div class="row">
                         <div class="col">
                             <label>Время проведения с:</label>
-                            <input type="date" class="form-control">
+                            <input type="date" name="fromDate" class="form-control">
                         </div>
                         <div class="col">
                             <label>по:</label>
-                            <input type="date" class="form-control">
+                            <input type="date" name="toDate" class="form-control">
                         </div>
                     </div>
                 </div>
-                
-                <p>С участием: <input type="email" size="30" placeholder="Введите фамилию участника"></p>
+                <p>С участием: <input type="text" name="organizedEmployee" size="30" placeholder="Введите фамилию участника"></p>
                 <input class="btn btn-dark" type="submit" value="Применить фильтр">
                 <a class="btn btn-dark" href="/search_page/view_meeting_list">Показать все</a>
                 <a class="btn btn-dark" href="/search_page/create_page">Добавить новое совещание</a>

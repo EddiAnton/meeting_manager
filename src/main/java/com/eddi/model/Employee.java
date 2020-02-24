@@ -30,6 +30,8 @@ public class Employee {
     )
     private List<Meeting> meetings;
 
+    public Employee() {}
+
     public Integer getId() {
         return id;
     }

@@ -38,6 +38,8 @@ public class Meeting {
     )
     private List<Employee> employees;
 
+    public Meeting() {}
+
     public Integer getId() {
         return id;
     }

@@ -5,10 +5,7 @@ import com.eddi.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,13 @@ public class SearchPageController {
     @RequestMapping
     public String mainPage(Model model) {
         return "search_page";
+    }
+
+    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    public String search(@RequestParam("topic") String topic, Model model) {
+        model.addAttribute("meetings", meetingService.findByTitleContaining(topic));
+        System.out.println(model);
+        return "view_meeting_list";
     }
 
     @RequestMapping(value = "/view_meeting_list")

@@ -42,6 +42,13 @@ public class MeetingService {
                 .collect(Collectors.toList());
     }
 
+    public List<Meeting> findByTitleContaining(String topic) {
+                return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(meetingRepo.findByTopicContaining(topic).iterator(),
+                        Spliterator.NONNULL), false)
+                .collect(Collectors.toList());
+    }
+
     public List<Employee> getAllEmployee() {
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(employeeRepo.findAll().iterator(),
