@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -25,8 +27,18 @@ public class SearchPageController {
     }
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
-    public String search(@RequestParam("topic") String topic, Model model) {
-        model.addAttribute("meetings", meetingService.findByTitleContaining(topic));
+    public String search(@RequestParam("topic") String topic,
+                         @RequestParam("organizedEmployee") String organizedEmployee,
+                         @RequestParam("fromDate") String fromDate,
+                         @RequestParam("toDate") String toDate,
+                         @RequestParam("departmentName") String departmentName,
+                         Model model) {
+        ArrayList<Meeting> selection = new ArrayList<>();
+        selection.addAll(meetingService.findByTitleContaining(topic));
+        selection.addAll(meetingService.findByOrganizedEmployeeContaining(organizedEmployee));
+        selection.addAll(meetingService.findByDateSpendingBetween(fromDate, toDate));
+        selection.addAll(meetingService.findByDepartmentNameContaining(departmentName));
+        model.addAttribute("meetings", selection);
         System.out.println(model);
         return "view_meeting_list";
     }

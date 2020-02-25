@@ -35,7 +35,7 @@ public class Meeting {
     @JoinColumn(name = "organized_department_id")
     private Department department;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "organized_employee_id")
     private Employee organizedEmployee;
 
