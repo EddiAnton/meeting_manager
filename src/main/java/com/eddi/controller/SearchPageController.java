@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -23,6 +22,8 @@ public class SearchPageController {
 
     @RequestMapping
     public String mainPage(Model model) {
+        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("departments", meetingService.getAllDepartment());
         return "search_page";
     }
 
@@ -33,14 +34,32 @@ public class SearchPageController {
                          @RequestParam("toDate") String toDate,
                          @RequestParam("departmentName") String departmentName,
                          Model model) {
-        ArrayList<Meeting> selection = new ArrayList<>();
-        if(topic.length() > 0) {
-            selection.addAll(meetingService.findByTitleContaining(topic));
+        List<Meeting> allSelection = new ArrayList<>();
+        List<Meeting> listFindOfTopicsAndDates;
+        List<Meeting> listFindOfParticipants;
+        List<Meeting> listFindOFDepartment;
+
+        listFindOfTopicsAndDates = meetingService.findByTopicContainingAndDateSpendingBetween(topic, fromDate, toDate);
+        listFindOfParticipants = meetingService.findByEmployeesContaining(participant);
+        listFindOFDepartment = meetingService.findByDepartmentNameContaining(departmentName);
+
+        if(allSelection.size() > 0 && listFindOfTopicsAndDates.size() > 0) {
+            allSelection.retainAll(listFindOfTopicsAndDates);
+        }else {
+            allSelection.addAll(listFindOfTopicsAndDates);
         }
-        selection.addAll(meetingService.findByEmployeesContaining(participant));
-        selection.addAll(meetingService.findByDateSpendingBetween(fromDate, toDate));
-        selection.addAll(meetingService.findByDepartmentNameContaining(departmentName));
-        model.addAttribute("meetings", selection);
+        if(allSelection.size() > 0 && listFindOfParticipants.size() > 0) {
+            allSelection.retainAll(listFindOfParticipants);
+        } else {
+            allSelection.addAll(listFindOfParticipants);
+        }
+        if(allSelection.size() > 0 && listFindOFDepartment.size() > 0) {
+            allSelection.retainAll(listFindOFDepartment);
+        } else {
+            allSelection.addAll(listFindOFDepartment);
+        }
+
+        model.addAttribute("meetings", allSelection);
         System.out.println(model);
         return "view_meeting_list";
     }
