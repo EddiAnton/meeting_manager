@@ -28,14 +28,16 @@ public class SearchPageController {
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public String search(@RequestParam("topic") String topic,
-                         @RequestParam("organizedEmployee") String organizedEmployee,
+                         @RequestParam("participant") String participant,
                          @RequestParam("fromDate") String fromDate,
                          @RequestParam("toDate") String toDate,
                          @RequestParam("departmentName") String departmentName,
                          Model model) {
         ArrayList<Meeting> selection = new ArrayList<>();
-        selection.addAll(meetingService.findByTitleContaining(topic));
-        selection.addAll(meetingService.findByOrganizedEmployeeContaining(organizedEmployee));
+        if(topic.length() > 0) {
+            selection.addAll(meetingService.findByTitleContaining(topic));
+        }
+        selection.addAll(meetingService.findByEmployeesContaining(participant));
         selection.addAll(meetingService.findByDateSpendingBetween(fromDate, toDate));
         selection.addAll(meetingService.findByDepartmentNameContaining(departmentName));
         model.addAttribute("meetings", selection);
