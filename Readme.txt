@@ -1,9 +1,19 @@
-﻿CREATE TABLE meeting (id bigserial primary key, date_spending date, topic varchar(255), organized_department_id int, organized_employee_id int, foreign key (organized_department_id) references department(id), foreign key (organized_employee_id) references employee(id))
+Meeting-Manager-1-0.
+Для развертывания приложения на локальной машине должны быть установлены:
+--JavaSE(JRE)1.8.x--
+--Apache Tomcat 8.5.x--
+--СУБД Postgresql 42.2.x--
 
-CREATE TABLE participants (meeting_id int, employee_id int, foreign key (meeting_id) references meeting(id), foreign key (employee_id) references employee(id))
+Сервер БД используется для процедур хранения, обработки и извлечения данных.
+В качестве базы данных используется Postgresql. После развертывания приложения
+необходимо создать базу данных и подключить ее к приложению внеся изменения в файл aplication.properties.
 
-CREATE TABLE department (id bigserial primary key, department_name varchar(255))
+spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:PORT/DB_NAME}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME:USERNAME}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:PASSWORD}
 
-CREATE TABLE employee (id bigserial primary key, name varchar(255), date_of_birth date, department_id int, foreign key (department_id) references department(id))
+PORT, DB_NAME, USERNAME и PASSWORD необходимо заменить на действительные значения.
+
+Для запуска приложения введите адрес (http://localhost:8080/search_page) в строке поиска браузера.
 
 
