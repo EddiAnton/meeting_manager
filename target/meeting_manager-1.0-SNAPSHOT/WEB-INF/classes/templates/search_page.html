@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+          <h2>Обзор проведенных совещаний</h2>
+        </div>
+        <div class="base-form">
+            <form action="#" th:action="@{/search_page/submit}" method="POST">
+               <div class="row">
+                    <div class="col">
+                        <p>Тема: <input type="text" name="topic" size="40" placeholder="Введите тему совещания"></p>
+                    </div>
+                    <div class="col">
+                        <p>Подразделение отрганизатор: <input type="text" name="departmentName" size="40" placeholder="Введите название подразделения"></p>
+                    </div>
+                  </div>
+                <div class="form-group">
+                   <div class="row">
+                        <div class="col">
+                            <label>Время проведения с:</label>
+                            <input type="date" name="fromDate" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>по:</label>
+                            <input type="date" name="toDate" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <p>С участием: <input type="text" name="participant" size="30" placeholder="Введите фамилию участника"></p>
+                <input class="btn btn-dark" type="submit" value="Применить фильтр">
+                <a class="btn btn-dark" href="/search_page/view_meeting_list">Показать все</a>
+                <a class="btn btn-dark" href="/search_page/create_page">Добавить новое совещание</a>
+            </form>
+        </div>
+        <div class="footer">
+            <hr>
+            <p>All rights reserved &copy;&nbsp;2020</p>
+        </div>
+    </div>     
+</body>
+</html>

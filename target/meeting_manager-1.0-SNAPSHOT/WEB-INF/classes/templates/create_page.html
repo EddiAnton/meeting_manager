@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+          <h2>Данные о совещании</h2>
+        </div>
+        <div class="base-form">
+            <form action="#" th:action="@{/search_page/create_page/submit}" th:object="${meeting}" method="post">
+                <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"
+                                id="topic" th:field="*{topic}"></p>
+                <div class="form-group">
+                    <label>Время проведения:</label>
+                    <input type="date" size="40" class="form-control" id="date_spending" th:field="*{dateSpending}">
+                </div>
+                <p>Подразделение: <select class="browser-default custom-select"
+                                         id="organized_department_id"
+                                         th:field="*{department}">
+                    <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
+                </select>
+                </p>
+                <p>Ответственный: <select class="browser-default custom-select"
+                                          id="organized_employee_id"
+                                          th:field="*{organizedEmployee}">
+                    <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
+                </select>
+                </p>
+                <p>Отметьте состав участников:</p>
+                    <table class="table table-striped" th:field="*{employees}">
+                        <tr th:each="employee, stat: ${employees}">
+                            <td>
+                                <input type="checkbox" th:id="${'cb_' + stat.index}" name="employees" th:value="${employee.id}">
+                            </td>
+                            <td>
+                                <label th:for="${'cb_' + stat.index}" th:text="${employee.name}"/>
+                            </td>
+                            <td>
+                                <label th:for="${'cb_' + stat.index}" th:text="${employee.department.departmentName}"/>
+                            </td>
+                        </tr>
+                    </table>
+            <input class="btn btn-dark" type="submit" value="Сохранить">
+            <input class="btn btn-dark" type="reset" value="Не сохранять">
+            <a class="btn btn-dark" href="/search_page">Назад</a>
+            </form>
+        </div>
+        <div class="footer">
+            <hr>
+            <p>All rights reserved &copy;&nbsp;2020</p>
+        </div>
+    </div>
+</body>
+</html>
