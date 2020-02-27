@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,10 +64,15 @@ public class MeetingService {
         Date to = null;
         try {
             from = new SimpleDateFormat("yyyy-MM-dd").parse(fromDate);
+        }
+        catch (Exception e) {
+            from = Date.from(Instant.ofEpochMilli(0));
+        }
+        try {
             to = new SimpleDateFormat("yyyy-MM-dd").parse(toDate);
         }
         catch (Exception e) {
-            return new ArrayList<>();
+            to = new Date(2050,1,1);
         }
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(meetingRepo.findByTopicContainingAndDateSpendingBetween(topic, from, to).iterator(),
