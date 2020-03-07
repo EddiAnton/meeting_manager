@@ -1,5 +1,6 @@
 package com.eddi.repository;
 
+import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,8 +17,9 @@ public interface MeetingRepo extends CrudRepository<Meeting, Integer> {
     public List<Meeting> findByEmployeesContaining(String name);
 
     @Query(value = "SELECT * FROM meeting INNER JOIN department ON meeting.organized_department_id=department.id WHERE department.department_name = ?1",
-            nativeQuery = true)
+           nativeQuery = true)
     public List<Meeting> findByDepartmentNameContaining(String departmentName);
 
     public List<Meeting> findByTopicContainingAndDateSpendingBetween(String topic, Date fromDate, Date toDate);
+
 }

@@ -1,6 +1,7 @@
 package com.eddi.controller;
 
 import com.eddi.model.Meeting;
+import com.eddi.service.EmployeeService;
 import com.eddi.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,9 @@ public class SearchPageController {
 
     @Autowired
     private MeetingService meetingService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @RequestMapping
     public String mainPage(Model model) {
@@ -70,6 +74,13 @@ public class SearchPageController {
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         return "view_meeting_list";
+    }
+
+    @RequestMapping(value = "/view_meeting_list/submit", method = RequestMethod.POST)
+    public String getAllMeetingEmployees(@RequestParam("meetingId") String meetingId, Model model) {
+        model.addAttribute("participants", employeeService.findByMeetingAllEmployees(meetingId));
+        model.addAttribute("departments", meetingService.getAllDepartment());
+        return "view_participants_list";
     }
 
     @RequestMapping(value = "/create_page")

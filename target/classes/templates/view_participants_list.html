@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Список участников совещания</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Участник</th>
+            <th>Подразделение</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="participant: ${participants}">
+            <td th:text="${participant.name}"/>
+            <td th:text="${participant.department.departmentName}"/>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-dark" href="/search_page">Назад</a>
+    <div class="footer">
+        <hr>
+        <p>All rights reserved &copy;&nbsp;2020</p>
+    </div>
+</div>
+</body>
+</html>
