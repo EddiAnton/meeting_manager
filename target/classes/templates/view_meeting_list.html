@@ -20,6 +20,7 @@
                 <th>Подразделение</th>
                 <th>Ответственный</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +35,10 @@
                     <input type="hidden" name="meetingId" th:value="${meeting.id}">
                     <input class="btn btn-dark" type="submit" value="Показать участников">
                 </td>
+                  <td>
+                      <input type="hidden" name="meetingId" th:value="${meeting.id}">
+                      <input class="btn btn-dark" type="submit" value="Доклад на совещании">
+                  </td>
               </tr>
             </form>
             </tbody>
