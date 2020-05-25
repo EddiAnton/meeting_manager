@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,6 +39,10 @@ public class Meeting {
     @ManyToOne(optional = false)
     @JoinColumn(name = "organized_employee_id")
     private Employee organizedEmployee;
+
+    @OneToMany
+    @JoinColumn(name = "report_id")
+    private Report report;
 
     @ManyToMany
     @JoinTable(
@@ -102,5 +107,13 @@ public class Meeting {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
     }
 }

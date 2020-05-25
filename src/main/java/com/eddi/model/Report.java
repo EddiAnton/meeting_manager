@@ -1,10 +1,31 @@
 package com.eddi.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "report")
 public class Report {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "title")
     private String title;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "author_id")
     private Employee author;
+
+    @Column(name = "text")
     private String text;
 
     public Report() {}
