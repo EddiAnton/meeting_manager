@@ -25,8 +25,8 @@ public class Report {
     @JoinColumn(name = "author_id")
     private Employee author;
 
-    @Column(name = "text")
-    private String text;
+    @Column(name = "content")
+    private String content;
 
     public Report() {}
 
@@ -55,10 +55,10 @@ public class Report {
     }
 
     public String getText() {
-        return text;
+        return content;
     }
 
     public void setText(String text) {
-        this.text = text;
+        this.content = content;
     }
 }
