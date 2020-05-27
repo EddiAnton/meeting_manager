@@ -1,6 +1,7 @@
 package com.eddi.controller;
 
 import com.eddi.model.Meeting;
+import com.eddi.model.Report;
 import com.eddi.service.EmployeeService;
 import com.eddi.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,12 +89,26 @@ public class SearchPageController {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
+        model.addAttribute("reports", meetingService.getAllReport());
         return "create_page";
     }
 
     @RequestMapping(value = "/create_page/submit", method = RequestMethod.POST)
     public String submitMeeting(@ModelAttribute Meeting meeting) {
-        meetingService.save(meeting);
+        meetingService.saveMeeting(meeting);
+        return "redirect:../";
+    }
+
+    @RequestMapping(value = "/create_report_page")
+    public String createReportPage(Model model) {
+        model.addAttribute("report", new Report());
+        model.addAttribute("employees", meetingService.getAllEmployee());
+        return "create_report_page";
+    }
+
+    @RequestMapping(value = "/create_report_page/submit", method = RequestMethod.POST)
+    public String submitReport(@ModelAttribute Report report) {
+        meetingService.saveReport(report);
         return "redirect:../";
     }
 }

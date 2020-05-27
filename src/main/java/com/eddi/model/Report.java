@@ -21,7 +21,7 @@ public class Report {
     @Column(name = "title")
     private String title;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "author_id")
     private Employee author;
 

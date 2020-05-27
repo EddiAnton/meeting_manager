@@ -3,9 +3,11 @@ package com.eddi.service;
 import com.eddi.model.Department;
 import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
+import com.eddi.model.Report;
 import com.eddi.repository.DepartmentRepo;
 import com.eddi.repository.EmployeeRepo;
 import com.eddi.repository.MeetingRepo;
+import com.eddi.repository.ReportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,10 +34,19 @@ public class MeetingService {
     @Autowired
     private DepartmentRepo departmentRepo;
 
-    public void save(Meeting meeting) {
+    @Autowired
+    private ReportRepo reportRepo;
+
+    public void saveMeeting(Meeting meeting) {
         meetingRepo.save(meeting);
 
         System.out.println(meeting);
+    }
+
+    public void saveReport(Report report) {
+        reportRepo.save(report);
+
+        System.out.println(report);
     }
 
     public List<Meeting> getAllMeeting() {
@@ -55,6 +66,13 @@ public class MeetingService {
     public List<Department> getAllDepartment() {
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(departmentRepo.findAll().iterator(),
+                        Spliterator.NONNULL), false)
+                .collect(Collectors.toList());
+    }
+
+    public List<Report> getAllReport() {
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(reportRepo.findAll().iterator(),
                         Spliterator.NONNULL), false)
                 .collect(Collectors.toList());
     }

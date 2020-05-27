@@ -40,7 +40,7 @@ public class Meeting {
     @JoinColumn(name = "organized_employee_id")
     private Employee organizedEmployee;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "report_id")
     private Report report;
 
