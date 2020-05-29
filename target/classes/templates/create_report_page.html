@@ -12,7 +12,7 @@
         <h2>Данные о докладе</h2>
     </div>
     <div class="base-form">
-        <form action="#" th:action="@{/search_page/create_page/create_report_page/submit}" th:object="${report}" method="post">
+        <form action="#" th:action="@{/search_page/create_report_page/submit}" th:object="${report}" method="post">
             <p>Тема доклада: <input type="text" size="80" placeholder="Введите тему доклада"
                                     id="title" th:field="*{title}"></p>
             <p>Автор: <select class="browser-default custom-select" id="author_id"
@@ -20,12 +20,12 @@
                 <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
             </select>
             </p>
-            <p><textarea cols=80 rows=10 id="content" placeholder="Текст доклада"
-                         th:field="*{content}"></textarea>
+            <!--<p><textarea cols=80 rows=10 id="content" placeholder="Текст доклада"
+                         th:field="*{content}"></textarea>-->
 
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Не сохранять">
-            <a class="btn btn-dark" href="/search_page">Назад</a>
+            <a class="btn btn-dark" href="/search_page/create_page">Назад</a>
         </form>
     </div>
     <div class="footer">

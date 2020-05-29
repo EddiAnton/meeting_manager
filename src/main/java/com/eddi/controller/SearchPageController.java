@@ -99,11 +99,11 @@ public class SearchPageController {
         return "redirect:../";
     }
 
-    @RequestMapping(value = "/create_report_page")
+    @RequestMapping(value = "create_report_page")
     public String createReportPage(Model model) {
         model.addAttribute("report", new Report());
         model.addAttribute("employees", meetingService.getAllEmployee());
-        return "create_report_page";
+        return "/create_report_page";
     }
 
     @RequestMapping(value = "/create_report_page/submit", method = RequestMethod.POST)
