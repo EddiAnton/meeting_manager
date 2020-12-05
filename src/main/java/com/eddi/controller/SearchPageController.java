@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/search_page")
+@RequestMapping("/index")
 public class SearchPageController {
 
     @Autowired
@@ -26,6 +26,14 @@ public class SearchPageController {
     private EmployeeService employeeService;
 
     @RequestMapping
+    public String getLastMeetings(Model model) {
+        model.addAttribute("meetings", meetingService.getAllMeeting());
+        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("departments", meetingService.getAllDepartment());
+        return "index";
+    }
+
+    @RequestMapping(value = "/search_page")
     public String mainPage(Model model) {
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
