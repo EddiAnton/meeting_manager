@@ -1,5 +1,6 @@
 package com.eddi.controller;
 
+import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import com.eddi.model.Report;
 import com.eddi.service.EmployeeService;
@@ -107,16 +108,29 @@ public class SearchPageController {
         return "redirect:../";
     }
 
-    @RequestMapping(value = "create_report_page")
-    public String createReportPage(Model model) {
+    @RequestMapping(value = "create_report")
+    public String createReport(Model model) {
         model.addAttribute("report", new Report());
         model.addAttribute("employees", meetingService.getAllEmployee());
-        return "/create_report_page";
+        return "/create_report";
     }
 
-    @RequestMapping(value = "/create_report_page/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/create_report/submit", method = RequestMethod.POST)
     public String submitReport(@ModelAttribute Report report) {
         meetingService.saveReport(report);
+        return "redirect:../";
+    }
+
+    @RequestMapping(value = "create_employee")
+    public String createEmployee(Model model) {
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("departments", meetingService.getAllDepartment());
+        return "/create_employee";
+    }
+
+    @RequestMapping(value = "create_employee/submit", method = RequestMethod.POST)
+    public String submitEmployee(@ModelAttribute Employee employee) {
+        meetingService.saveEmployee(employee);
         return "redirect:../";
     }
 }

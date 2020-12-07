@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,20 +15,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="create_employee">New employee</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index/create_employee">New employee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="create_report.html">New report</a>
+                    <a class="nav-link" href="/index/create_report.html">New report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="create_page.html">New meeting</a>
+                    <a class="nav-link" href="/index/create_page.html">New meeting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="search_page.html">Search meeting</a>
+                    <a class="nav-link" href="/index/search_page.html">Search meeting</a>
                 </li>
             </ul>
         </div>
@@ -36,8 +36,22 @@
     <div class="header">
         <h4>New employee</h4>
     </div>
+    <div class="base-form">
+        <form action="#" th:action="@{/index/create_employee/submit}" th:object="${employee}" method="post">
+            <p>Имя работника: <input type="text" size="80" placeholder="Введите имя и фамилию"
+                                    id="name" th:field="*{name}"></p>
+            <div class="form-group">
+                <label>Дата рождения:</label>
+                <input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{date_of_birth}">
+            </div>
+            <!--<p><textarea cols=80 rows=10 id="content" placeholder="Текст доклада"
+                         th:field="*{content}"></textarea>-->
 
-
+            <input class="btn btn-dark" type="submit" value="Сохранить">
+            <input class="btn btn-dark" type="reset" value="Не сохранять">
+            <a class="btn btn-dark" href="/index/create_employee">Назад</a>
+        </form>
+    </div>
     <div class="footer">
         <hr>
         <p>All rights reserved &copy;&nbsp;2020</p>

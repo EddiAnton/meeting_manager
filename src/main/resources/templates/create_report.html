@@ -15,20 +15,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/index">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/create_employee">New employee</a>
+                    <a class="nav-link" href="/index/create_employee">New employee</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index/create_report">New report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/create_report">New report</a>
+                    <a class="nav-link" href="/index/create_page">New meeting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/create_page">New meeting</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/search_page">Search meeting</a>
+                    <a class="nav-link" href="/index/search_page">Search meeting</a>
                 </li>
             </ul>
         </div>
@@ -37,7 +37,7 @@
         <h4>Данные о докладе</h4>
     </div>
     <div class="base-form">
-        <form action="#" th:action="@{/search_page/create_report_page/submit}" th:object="${report}" method="post">
+        <form action="#" th:action="@{/index/create_report_page/submit}" th:object="${report}" method="post">
             <p>Тема доклада: <input type="text" size="80" placeholder="Введите тему доклада"
                                     id="title" th:field="*{title}"></p>
             <p>Автор: <select class="browser-default custom-select" id="author_id"
@@ -50,7 +50,7 @@
 
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Не сохранять">
-            <a class="btn btn-dark" href="/search_page/create_page">Назад</a>
+            <a class="btn btn-dark" href="/index/create_page">Назад</a>
         </form>
     </div>
     <div class="footer">

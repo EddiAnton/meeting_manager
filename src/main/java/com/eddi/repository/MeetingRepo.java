@@ -1,6 +1,5 @@
 package com.eddi.repository;
 
-import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

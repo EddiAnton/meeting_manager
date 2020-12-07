@@ -49,6 +49,12 @@ public class MeetingService {
         System.out.println(report);
     }
 
+    public void saveEmployee(Employee employee) {
+        employeeRepo.save(employee);
+
+        System.out.println(employee);
+    }
+
     public List<Meeting> getAllMeeting() {
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(meetingRepo.findAll().iterator(),
