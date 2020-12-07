@@ -15,7 +15,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/index">Home</a>
                 </li>
                 <li class="nav-item">
@@ -34,25 +34,16 @@
         </div>
     </nav>
     <div class="header">
-        <h4>Данные о докладе</h4>
+        <h4>Доклад на совещании</h4>
     </div>
-    <div class="base-form">
-        <form action="#" th:action="@{/search_page/create_report_page/submit}" th:object="${report}" method="post">
-            <p>Тема доклада: <input type="text" size="80" placeholder="Введите тему доклада"
-                                    id="title" th:field="*{title}"></p>
-            <p>Автор: <select class="browser-default custom-select" id="author_id"
-                              th:field="*{author}">
-                <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
-            </select>
-            </p>
-            <!--<p><textarea cols=80 rows=10 id="content" placeholder="Текст доклада"
-                         th:field="*{content}"></textarea>-->
-
-            <input class="btn btn-dark" type="submit" value="Сохранить">
-            <input class="btn btn-dark" type="reset" value="Не сохранять">
-            <a class="btn btn-dark" href="/search_page/create_page">Назад</a>
-        </form>
-    </div>
+    <table class="table table-striped">
+        <tr>
+            <td th:text="${report.title}"/>
+            <td th:text="${report.author}"/>
+            <td th:text="${report.content}"/>
+        </tr>
+    </table>
+    <a class="btn btn-dark" href="/index">Назад</a>
     <div class="footer">
         <hr>
         <p>All rights reserved &copy;&nbsp;2020</p>

@@ -18,7 +18,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/index")
-public class SearchPageController {
+public class MeetingManagerController {
 
     @Autowired
     private MeetingService meetingService;
@@ -31,17 +31,17 @@ public class SearchPageController {
         model.addAttribute("meetings", meetingService.getAllMeeting());
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
-        return "index";
+        return "/index";
     }
 
     @RequestMapping(value = "/search_page")
     public String mainPage(Model model) {
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
-        return "search_page";
+        return "/search_page";
     }
 
-    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/search_page/submit", method = RequestMethod.POST)
     public String search(@RequestParam("topic") String topic,
                          @RequestParam("participant") String participant,
                          @RequestParam("fromDate") String fromDate,
@@ -75,7 +75,7 @@ public class SearchPageController {
 
         model.addAttribute("meetings", allSelection);
         System.out.println(model);
-        return "view_meeting_list";
+        return "/view_meeting_list";
     }
 
     @RequestMapping(value = "/view_meeting_list")
@@ -83,14 +83,14 @@ public class SearchPageController {
         model.addAttribute("meetings", meetingService.getAllMeeting());
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
-        return "view_meeting_list";
+        return "/view_meeting_list";
     }
 
     @RequestMapping(value = "/view_meeting_list/submit", method = RequestMethod.POST)
     public String getAllMeetingEmployees(@RequestParam("meetingId") String meetingId, Model model) {
         model.addAttribute("participants", employeeService.findByMeetingAllEmployees(meetingId));
         model.addAttribute("departments", meetingService.getAllDepartment());
-        return "view_participants_list";
+        return "/view_participants_list";
     }
 
     @RequestMapping(value = "/create_page")
@@ -99,7 +99,7 @@ public class SearchPageController {
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         model.addAttribute("reports", meetingService.getAllReport());
-        return "create_page";
+        return "/create_page";
     }
 
     @RequestMapping(value = "/create_page/submit", method = RequestMethod.POST)

@@ -1,12 +1,25 @@
 package com.eddi.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
+    private static final String PATTERN = "yyyy-MM-dd";
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
@@ -48,12 +61,19 @@ public class Employee {
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
-        return date_of_birth;
+    public String getDateOfBirth() {
+        if (date_of_birth != null) {
+            return new SimpleDateFormat(PATTERN).format(date_of_birth);
+        }
+        return "";
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.date_of_birth = dateOfBirth;
+    public void setDateOfBirth(String date_of_birth) {
+        try {
+            this.date_of_birth = new SimpleDateFormat(PATTERN).parse(date_of_birth);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Department getDepartment() {

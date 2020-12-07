@@ -37,7 +37,7 @@
           <h4>Данные о совещании</h4>
         </div>
         <div class="base-form">
-            <form action="#" th:action="@{/search_page/create_page/submit}" th:object="${meeting}" method="post">
+            <form action="#" th:action="@{/index/create_page/submit}" th:object="${meeting}" method="POST">
                 <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"
                                 id="topic" th:field="*{topic}"></p>
                 <div class="form-group">
@@ -81,14 +81,13 @@
                         </p>
                     </div>
                     <div class="col-sm-3 my-1">
-                        <a class="btn btn-dark" href="/search_page/create_report_page">Добавить новый доклад</a>
+                        <a class="btn btn-dark" href="/index/create_report">Добавить новый доклад</a>
                     </div>
                 </div>
                 <br>
-
                 <input class="btn btn-dark" type="submit" value="Сохранить">
-            <input class="btn btn-dark" type="reset" value="Не сохранять">
-            <a class="btn btn-dark" href="/search_page">Назад</a>
+                <input class="btn btn-dark" type="reset" value="Не сохранять">
+                <a class="btn btn-dark" href="/index">Назад</a>
             </form>
         </div>
         <div class="footer">

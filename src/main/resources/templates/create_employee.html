@@ -16,19 +16,19 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="/index">Home</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/index/create_employee">New employee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_report.html">New report</a>
+                    <a class="nav-link" href="/index/create_report">New report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_page.html">New meeting</a>
+                    <a class="nav-link" href="/index/create_page">New meeting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/search_page.html">Search meeting</a>
+                    <a class="nav-link" href="/index/search_page">Search meeting</a>
                 </li>
             </ul>
         </div>
@@ -37,19 +37,21 @@
         <h4>New employee</h4>
     </div>
     <div class="base-form">
-        <form action="#" th:action="@{/index/create_employee/submit}" th:object="${employee}" method="post">
+        <form action="#" th:action="@{/index/create_employee/submit}" th:object="${employee}" method="POST">
             <p>Имя работника: <input type="text" size="80" placeholder="Введите имя и фамилию"
                                     id="name" th:field="*{name}"></p>
             <div class="form-group">
                 <label>Дата рождения:</label>
-                <input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{date_of_birth}">
+                <!--<input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{date_of_birth}">
             </div>
-            <!--<p><textarea cols=80 rows=10 id="content" placeholder="Текст доклада"
-                         th:field="*{content}"></textarea>-->
-
+            <p>Подразделение: <select class="browser-default custom-select" id="department_id"
+                                      th:field="*{department_id}">
+                <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.id}"/>
+            </select>
+            </p>-->
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Не сохранять">
-            <a class="btn btn-dark" href="/index/create_employee">Назад</a>
+            <a class="btn btn-dark" href="/index/view_employee_list">Показать все</a>
         </form>
     </div>
     <div class="footer">
