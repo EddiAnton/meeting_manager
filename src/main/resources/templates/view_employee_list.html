@@ -37,11 +37,20 @@
         <h4>Employees</h4>
     </div>
     <table class="table table-striped">
+        <thead>
         <tr>
-            <td th:text="${employee.name}"/>
-            <td th:text="${employee.date_of_birth}"/>
-            <td th:text="${employee.department.departmentName}"/>
+            <th>Имя</th>
+            <th>Дата рождения</th>
+            <th>Департамент</th>
         </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee: ${employees}">
+                <td th:text="${employee.name}"/>
+                <td th:text="${employee.date_of_birth}"/>
+                <td th:text="${employee.department.departmentName}"/>
+            </tr>
+        </tbody>
     </table>
     <a class="btn btn-dark" href="/index">Назад</a>
     <div class="footer">

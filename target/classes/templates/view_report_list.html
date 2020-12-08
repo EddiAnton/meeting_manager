@@ -46,11 +46,10 @@
         <tbody>
             <tr th:each="report: ${reports}">
                 <td th:text="${report.title}"/>
-                <td th:text="${report.author}"/>
+                <td th:text="${report.author.name}"/>
             </tr>
         </tbody>
     </table>
-    <a class="btn btn-dark" href="/index">Назад</a>
     <div class="footer">
         <hr>
         <p>All rights reserved &copy;&nbsp;2020</p>

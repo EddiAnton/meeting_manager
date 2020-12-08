@@ -130,9 +130,10 @@ public class MeetingManagerController {
     }
 
     @RequestMapping(value = "create_employee/submit", method = RequestMethod.POST)
-    public String submitEmployee(@ModelAttribute Employee employee) {
+    public String submitEmployee(@ModelAttribute Employee employee, Model model) {
         meetingService.saveEmployee(employee);
-        return "redirect:../";
+        model.addAttribute("employees", meetingService.getAllEmployee());
+        return "/view_employee_list";
     }
 }
 
