@@ -25,10 +25,10 @@
                     <a class="nav-link" href="/index/create_report">New report</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_page">New meeting</a>
+                    <a class="nav-link" href="/index/create_meeting">New meeting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/search_page">Search meeting</a>
+                    <a class="nav-link" href="/index/search_meeting">Search meeting</a>
                 </li>
             </ul>
         </div>
@@ -37,11 +37,18 @@
         <h4>Доклад на совещании</h4>
     </div>
     <table class="table table-striped">
+        <thead>
         <tr>
-            <td th:text="${report.title}"/>
-            <td th:text="${report.author}"/>
-            <td th:text="${report.content}"/>
+            <th>Тема доклада</th>
+            <th>Автор</th>
         </tr>
+        </thead>
+        <tbody>
+            <tr th:each="report: ${reports}">
+                <td th:text="${report.title}"/>
+                <td th:text="${report.author}"/>
+            </tr>
+        </tbody>
     </table>
     <a class="btn btn-dark" href="/index">Назад</a>
     <div class="footer">

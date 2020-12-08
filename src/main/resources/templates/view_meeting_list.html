@@ -25,10 +25,10 @@
                         <a class="nav-link" href="/index/create_report">New report</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/create_page">New meeting</a>
+                        <a class="nav-link" href="/index/create_meeting">New meeting</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/search_page">Search meeting</a>
+                        <a class="nav-link" href="/index/search_meeting">Search meeting</a>
                     </li>
                 </ul>
             </div>
@@ -49,7 +49,7 @@
               </tr>
             </thead>
             <tbody>
-            <form th:each="meeting: ${meetings}" action="#" th:action="@{/search_page/view_meeting_list/submit}" method="POST">
+            <form th:each="meeting: ${meetings}" action="#" th:action="@{/search_meeting/view_meeting_list/submit}" method="POST">
               <tr>
                 <td th:text="${meeting.id}"/>
                 <td th:text="${meeting.dateSpending}"/>
@@ -64,7 +64,7 @@
             </form>
             </tbody>
           </table>
-        <a class="btn btn-dark" href="/index/create_page">Добавить новое совещание</a>
+        <a class="btn btn-dark" href="/index/create_meeting">Добавить новое совещание</a>
         <a class="btn btn-dark" href="/index">Назад</a>
         <div class="footer">
             <hr>

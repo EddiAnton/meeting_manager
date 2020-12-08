@@ -34,14 +34,14 @@ public class MeetingManagerController {
         return "/index";
     }
 
-    @RequestMapping(value = "/search_page")
+    @RequestMapping(value = "/search_meeting")
     public String mainPage(Model model) {
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
-        return "/search_page";
+        return "/search_meeting";
     }
 
-    @RequestMapping(value = "/search_page/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/search_meeting/submit", method = RequestMethod.POST)
     public String search(@RequestParam("topic") String topic,
                          @RequestParam("participant") String participant,
                          @RequestParam("fromDate") String fromDate,
@@ -93,16 +93,16 @@ public class MeetingManagerController {
         return "/view_participants_list";
     }
 
-    @RequestMapping(value = "/create_page")
+    @RequestMapping(value = "/create_meeting")
     public String createPage(Model model) {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         model.addAttribute("reports", meetingService.getAllReport());
-        return "/create_page";
+        return "/create_meeting";
     }
 
-    @RequestMapping(value = "/create_page/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/create_meeting/submit", method = RequestMethod.POST)
     public String submitMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
         return "redirect:../";
@@ -116,9 +116,10 @@ public class MeetingManagerController {
     }
 
     @RequestMapping(value = "/create_report/submit", method = RequestMethod.POST)
-    public String submitReport(@ModelAttribute Report report) {
+    public String submitReport(@ModelAttribute Report report, Model model) {
         meetingService.saveReport(report);
-        return "redirect:../";
+        model.addAttribute("reports", meetingService.getAllReport());
+        return "/view_report_list";
     }
 
     @RequestMapping(value = "create_employee")

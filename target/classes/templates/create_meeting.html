@@ -25,19 +25,19 @@
                         <a class="nav-link" href="/index/create_report">New report</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/index/create_page">New meeting</a>
+                        <a class="nav-link active" href="/index/create_meeting">New meeting</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/search_page">Search meeting</a>
+                        <a class="nav-link" href="/index/search_meeting">Search meeting</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="header">
-          <h4>Данные о совещании</h4>
+          <h4>Meeting data</h4>
         </div>
         <div class="base-form">
-            <form action="#" th:action="@{/index/create_page/submit}" th:object="${meeting}" method="POST">
+            <form action="#" th:action="@{/index/create_meeting/submit}" th:object="${meeting}" method="POST">
                 <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"
                                 id="topic" th:field="*{topic}"></p>
                 <div class="form-group">

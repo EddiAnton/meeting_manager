@@ -25,19 +25,19 @@
                         <a class="nav-link" href="/index/create_report">New report</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/create_page">New meeting</a>
+                        <a class="nav-link" href="/index/create_meeting">New meeting</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/index/search_page">Search meeting</a>
+                        <a class="nav-link" href="/index/search_meeting">Search meeting</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="header">
-          <h4>Обзор проведенных совещаний</h4>
+          <h4>Find meetings held</h4>
         </div>
         <div class="base-form">
-            <form action="#" th:action="@{/search_page/submit}" method="POST">
+            <form action="#" th:action="@{/search_meeting/submit}" method="POST">
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
@@ -64,7 +64,7 @@
                 <br>
                 <input class="btn btn-dark" type="submit" value="Применить фильтр">
                 <a class="btn btn-dark" href="/index/view_meeting_list">Показать все</a>
-                <a class="btn btn-dark" href="/index/create_page">Добавить новое совещание</a>
+                <a class="btn btn-dark" href="/index/create_meeting">Добавить новое совещание</a>
             </form>
         </div>
         <div class="footer">
