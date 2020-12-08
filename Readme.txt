@@ -14,9 +14,9 @@ spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:PASSWORD}
 
 PORT, DB_NAME, USERNAME и PASSWORD необходимо заменить на действительные значения.
 
-Для запуска приложения введите адрес (http://localhost:8080/search_page) в строке поиска браузера.
+Для запуска приложения введите адрес (http://localhost:8080/index) в строке поиска браузера.
 
-Работающую версию приложения можно посмотреть по адресу:
+Первую версию приложения можно посмотреть по адресу:
 https://meeting-manager-1-0.herokuapp.com/search_page
 
 
