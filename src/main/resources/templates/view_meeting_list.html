@@ -49,7 +49,7 @@
               </tr>
             </thead>
             <tbody>
-            <form th:each="meeting: ${meetings}" action="#" th:action="@{/view_meeting_list/submit}" method="POST">
+            <form th:each="meeting: ${meetings}" action="#" th:action="@{/index/view_meeting_list/submit}" method="POST">
               <tr>
                 <td th:text="${meeting.id}"/>
                 <td th:text="${meeting.dateSpending}"/>
@@ -65,7 +65,7 @@
             </tbody>
           </table>
         <a class="btn btn-dark" href="/index/create_meeting">Добавить новое совещание</a>
-        <a class="btn btn-dark" href="/index">Назад</a>
+        <a class="btn btn-dark" href="/index/search_meeting">Назад</a>
         <div class="footer">
             <hr>
             <p>All rights reserved &copy;&nbsp;2020</p>
