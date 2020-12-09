@@ -21,4 +21,8 @@ public interface MeetingRepo extends CrudRepository<Meeting, Integer> {
 
     public List<Meeting> findByTopicContainingAndDateSpendingBetween(String topic, Date fromDate, Date toDate);
 
+    @Query(value = "SELECT * FROM meeting WHERE date_spending IS NOT NULL ORDER BY date_spending DESC LIMIT 5;",
+           nativeQuery = true)
+    public List<Meeting> findLastMeeting();
+
 }

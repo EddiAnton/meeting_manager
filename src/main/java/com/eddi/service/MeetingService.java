@@ -11,6 +11,7 @@ import com.eddi.repository.ReportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.plaf.PanelUI;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -118,5 +119,10 @@ public class MeetingService {
                 .collect(Collectors.toList());
     }
 
-
+    public List<Meeting> getLastMeeting() {
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(meetingRepo.findLastMeeting().iterator(),
+                        Spliterator.NONNULL), false)
+                .collect(Collectors.toList());
+    }
 }

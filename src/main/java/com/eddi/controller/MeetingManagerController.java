@@ -28,7 +28,7 @@ public class MeetingManagerController {
 
     @RequestMapping
     public String getLastMeetings(Model model) {
-        model.addAttribute("meetings", meetingService.getAllMeeting());
+        model.addAttribute("meetings", meetingService.getLastMeeting());
         model.addAttribute("employees", meetingService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         return "/index";
