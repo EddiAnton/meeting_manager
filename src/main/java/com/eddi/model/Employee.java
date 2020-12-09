@@ -29,7 +29,7 @@ public class Employee {
     private String name;
 
     @Column(name = "date_of_birth")
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -62,15 +62,15 @@ public class Employee {
     }
 
     public String getDateOfBirth() {
-        if (date_of_birth != null) {
-            return new SimpleDateFormat(PATTERN).format(date_of_birth);
+        if (dateOfBirth != null) {
+            return new SimpleDateFormat(PATTERN).format(dateOfBirth);
         }
         return "";
     }
 
-    public void setDateOfBirth(String date_of_birth) {
+    public void setDateOfBirth(String dateOfBirth) {
         try {
-            this.date_of_birth = new SimpleDateFormat(PATTERN).parse(date_of_birth);
+            this.dateOfBirth = new SimpleDateFormat(PATTERN).parse(dateOfBirth);
         } catch (ParseException e) {
             e.printStackTrace();
         }

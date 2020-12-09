@@ -42,7 +42,7 @@
                                     id="name" th:field="*{name}"></p>
             <div class="form-group">
                 <label>Дата рождения:</label>
-                <input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{date_of_birth}">
+                <input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{dateOfBirth}">
             </div>
             <p>Подразделение: <select class="browser-default custom-select" id="department_id" th:field="*{department}">
                 <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>

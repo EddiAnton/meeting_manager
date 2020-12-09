@@ -47,12 +47,12 @@
         <tbody>
             <tr th:each="employee: ${employees}">
                 <td th:text="${employee.name}"/>
-                <td th:text="${employee.date_of_birth}"/>
+                <td th:text="${employee.dateOfBirth}"/>
                 <td th:text="${employee.department.departmentName}"/>
             </tr>
         </tbody>
     </table>
-    <a class="btn btn-dark" href="/index">Назад</a>
+    <a class="btn btn-dark" href="/index/create_employee">Назад</a>
     <div class="footer">
         <hr>
         <p>All rights reserved &copy;&nbsp;2020</p>

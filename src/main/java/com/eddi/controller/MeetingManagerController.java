@@ -108,7 +108,7 @@ public class MeetingManagerController {
         return "redirect:../";
     }
 
-    @RequestMapping(value = "create_report")
+    @RequestMapping(value = "/create_report")
     public String createReport(Model model) {
         model.addAttribute("report", new Report());
         model.addAttribute("employees", meetingService.getAllEmployee());
@@ -122,16 +122,28 @@ public class MeetingManagerController {
         return "/view_report_list";
     }
 
-    @RequestMapping(value = "create_employee")
+    @RequestMapping(value = "/view_report_list", method = RequestMethod.GET)
+    public String viewReportList(Model model) {
+        model.addAttribute("reports", meetingService.getAllReport());
+        return "/view_report_list";
+    }
+
+    @RequestMapping(value = "/create_employee")
     public String createEmployee(Model model) {
         model.addAttribute("employee", new Employee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         return "/create_employee";
     }
 
-    @RequestMapping(value = "create_employee/submit", method = RequestMethod.POST)
+    @RequestMapping(value = "/create_employee/submit", method = RequestMethod.POST)
     public String submitEmployee(@ModelAttribute Employee employee, Model model) {
         meetingService.saveEmployee(employee);
+        model.addAttribute("employees", meetingService.getAllEmployee());
+        return "/view_employee_list";
+    }
+
+    @RequestMapping(value = "/view_employee_list", method = RequestMethod.GET)
+    public String viewEmployeeList(Model model) {
         model.addAttribute("employees", meetingService.getAllEmployee());
         return "/view_employee_list";
     }
