@@ -38,19 +38,19 @@
     </div>
     <div class="base-form">
         <form action="#" th:action="@{/index/create_report/submit}" th:object="${report}" method="POST">
-            <p>Тема доклада: <input type="text" size="80" placeholder="Введите тему доклада"
+            <p>Theme of the report: <input type="text" size="80" placeholder="Enter the topic of the report"
                                     id="title" th:field="*{title}"></p>
-            <p>Автор: <select class="browser-default custom-select" id="author_id"
+            <p>Author: <select class="browser-default custom-select" id="author_id"
                               th:field="*{author}">
                 <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
             </select>
             </p>
-            <!--<p><textarea cols=80 rows=10 id="content" placeholder="Текст доклада"
+            <!--<p><textarea cols=80 rows=10 id="content" placeholder="Report text"
                          th:field="*{content}"></textarea>-->
 
-            <input class="btn btn-dark" type="submit" value="Сохранить">
-            <input class="btn btn-dark" type="reset" value="Не сохранять">
-            <a class="btn btn-dark" href="/index/view_report_list">Показать все</a>
+            <input class="btn btn-dark" type="submit" value="Save">
+            <input class="btn btn-dark" type="reset" value="Cancel">
+            <a class="btn btn-dark" href="/index/view_report_list">Show all</a>
         </form>
     </div>
     <div class="footer">

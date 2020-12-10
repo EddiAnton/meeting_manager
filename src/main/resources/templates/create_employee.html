@@ -38,19 +38,19 @@
     </div>
     <div class="base-form">
         <form action="#" th:action="@{/index/create_employee/submit}" th:object="${employee}" method="POST">
-            <p>Имя работника: <input type="text" size="80" placeholder="Введите имя и фамилию"
+            <p>Employee name: <input type="text" size="80" placeholder="Enter first and last name"
                                     id="name" th:field="*{name}"></p>
             <div class="form-group">
-                <label>Дата рождения:</label>
+                <label>Date of Birth:</label>
                 <input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{dateOfBirth}">
             </div>
-            <p>Подразделение: <select class="browser-default custom-select" id="department_id" th:field="*{department}">
+            <p>Department: <select class="browser-default custom-select" id="department_id" th:field="*{department}">
                 <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
             </select>
             </p>
-            <input class="btn btn-dark" type="submit" value="Сохранить">
-            <input class="btn btn-dark" type="reset" value="Не сохранять">
-            <a class="btn btn-dark" href="/index/view_employee_list">Показать все</a>
+            <input class="btn btn-dark" type="submit" value="Save">
+            <input class="btn btn-dark" type="reset" value="Cancel">
+            <a class="btn btn-dark" href="/index/view_employee_list">Show all</a>
         </form>
     </div>
     <div class="footer">

@@ -38,25 +38,25 @@
         </div>
         <div class="base-form">
             <form action="#" th:action="@{/index/create_meeting/submit}" th:object="${meeting}" method="POST">
-                <p>Тема: <input type="text" size="40" placeholder="Введите тему совещания"
+                <p>Theme: <input type="text" size="40" placeholder="Enter meeting subject"
                                 id="topic" th:field="*{topic}"></p>
                 <div class="form-group">
-                    <label>Время проведения:</label>
+                    <label>Date Time spending</label>
                     <input type="date" size="40" class="form-control" id="date_spending" th:field="*{dateSpending}">
                 </div>
-                <p>Подразделение: <select class="browser-default custom-select"
+                <p>Department: <select class="browser-default custom-select"
                                          id="organized_department_id"
                                          th:field="*{department}">
                     <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
                 </select>
                 </p>
-                <p>Ответственный: <select class="browser-default custom-select"
+                <p>Responsible person: <select class="browser-default custom-select"
                                           id="organized_employee_id"
                                           th:field="*{organizedEmployee}">
                     <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
                 </select>
                 </p>
-                <p>Отметьте состав участников:</p>
+                <p>Mark the list of participants:</p>
                     <table class="table table-striped" th:field="*{employees}">
                         <tr th:each="employee, stat: ${employees}">
                             <td>
@@ -70,10 +70,10 @@
                             </td>
                         </tr>
                     </table>
-                <p>Информация о докладе, проведенном на совещании:</p>
+                <p>Information about the report delivered at the meeting:</p>
                 <div class="form-row align-items-center">
                     <div class="col-sm-3 my-1">
-                        <p>Тема доклада: <select class="browser-default custom-select"
+                        <p>Theme of the report: <select class="browser-default custom-select"
                                                   id="report_id"
                                                   th:field="*{report}">
                             <option th:each="report : ${reports}" th:value="${report.id}" th:text="${report.title}"/>
@@ -81,12 +81,12 @@
                         </p>
                     </div>
                     <div class="col-sm-3 my-1">
-                        <a class="btn btn-dark" href="/index/create_report">Добавить новый доклад</a>
+                        <a class="btn btn-dark" href="/index/create_report">Add new report</a>
                     </div>
                 </div>
                 <br>
-                <input class="btn btn-dark" type="submit" value="Сохранить">
-                <input class="btn btn-dark" type="reset" value="Не сохранять">
+                <input class="btn btn-dark" type="submit" value="Save">
+                <input class="btn btn-dark" type="reset" value="Cancel">
             </form>
         </div>
         <div class="footer">

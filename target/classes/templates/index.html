@@ -34,16 +34,16 @@
         </div>
     </nav>
     <div class="header">
-        <h4>Последние проведенные совещания</h4>
+        <h4>Recent meetings held</h4>
     </div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ID совещания</th>
-            <th>Дата Время</th>
-            <th>Тема</th>
-            <th>Подразделение</th>
-            <th>Ответственный</th>
+            <th>Meeting ID</th>
+            <th>Date Time</th>
+            <th>Theme</th>
+            <th>Department</th>
+            <th>Responsible person</th>
             <th></th>
             <th></th>
         </tr>
@@ -58,7 +58,7 @@
                 <td th:text="${meeting.organizedEmployee.name}"/>
                 <td>
                     <input type="hidden" name="meetingId" th:value="${meeting.id}">
-                    <input class="btn btn-dark" type="submit" value="Показать участников">
+                    <input class="btn btn-dark" type="submit" value="Show participants">
                 </td>
 
         </form>
