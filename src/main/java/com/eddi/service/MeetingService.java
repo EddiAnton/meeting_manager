@@ -57,13 +57,6 @@ public class MeetingService {
                 .collect(Collectors.toList());
     }
 
-    public List<Department> getAllDepartment() {
-        return StreamSupport
-                .stream(Spliterators.spliteratorUnknownSize(departmentRepo.findAll().iterator(),
-                        Spliterator.NONNULL), false)
-                .collect(Collectors.toList());
-    }
-
     public List<Report> getAllReport() {
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(reportRepo.findAll().iterator(),

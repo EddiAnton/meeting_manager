@@ -1,8 +1,10 @@
 package com.eddi.controller;
 
+import com.eddi.model.Department;
 import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import com.eddi.model.Report;
+import com.eddi.service.DepartmentService;
 import com.eddi.service.EmployeeService;
 import com.eddi.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +28,21 @@ public class MeetingManagerController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private DepartmentService departmentService;
+
     @RequestMapping
     public String getLastMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getLastMeeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
-        model.addAttribute("departments", meetingService.getAllDepartment());
+        model.addAttribute("departments", departmentService.getAllDepartment());
         return "/index";
     }
 
     @RequestMapping(value = "/search_meeting")
     public String mainPage(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployee());
-        model.addAttribute("departments", meetingService.getAllDepartment());
+        model.addAttribute("departments", departmentService.getAllDepartment());
         return "/search_meeting";
     }
 
@@ -82,14 +87,14 @@ public class MeetingManagerController {
     public String getAllMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getAllMeeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
-        model.addAttribute("departments", meetingService.getAllDepartment());
+        model.addAttribute("departments", departmentService.getAllDepartment());
         return "/view_meeting_list";
     }
 
     @RequestMapping(value = "/view_meeting_list/submit", method = RequestMethod.POST)
     public String getAllMeetingEmployees(@RequestParam("meetingId") String meetingId, Model model) {
         model.addAttribute("participants", employeeService.findByMeetingAllEmployees(meetingId));
-        model.addAttribute("departments", meetingService.getAllDepartment());
+        model.addAttribute("departments", departmentService.getAllDepartment());
         return "/view_participants_list";
     }
 
@@ -97,7 +102,7 @@ public class MeetingManagerController {
     public String createPage(Model model) {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
-        model.addAttribute("departments", meetingService.getAllDepartment());
+        model.addAttribute("departments", departmentService.getAllDepartment());
         model.addAttribute("reports", meetingService.getAllReport());
         return "/create_meeting";
     }
@@ -131,7 +136,7 @@ public class MeetingManagerController {
     @RequestMapping(value = "/create_employee")
     public String createEmployee(Model model) {
         model.addAttribute("employee", new Employee());
-        model.addAttribute("departments", meetingService.getAllDepartment());
+        model.addAttribute("departments", departmentService.getAllDepartment());
         return "/create_employee";
     }
 
@@ -146,6 +151,25 @@ public class MeetingManagerController {
     public String viewEmployeeList(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployee());
         return "/view_employee_list";
+    }
+
+    @RequestMapping(value = "/create_department")
+    public String createDepartment(Model model) {
+        model.addAttribute("department", new Department());
+        return "/create_department";
+    }
+
+    @RequestMapping(value = "/create_department/submit", method = RequestMethod.POST)
+    public String submitDepartment(@ModelAttribute Department department, Model model) {
+        departmentService.saveDepartment(department);
+        model.addAttribute("departments", departmentService.getAllDepartment());
+        return "/view_department_list";
+    }
+
+    @RequestMapping(value = "/view_department_list", method = RequestMethod.GET)
+    public String viewDepartmentList(Model model) {
+        model.addAttribute("departments", departmentService.getAllDepartment());
+        return "/view_department_list";
     }
 }
 

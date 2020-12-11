@@ -37,23 +37,23 @@
         </div>
     </nav>
     <div class="header">
-        <h4>Meeting report</h4>
+        <h4>Departments</h4>
     </div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Theme of the report</th>
-            <th>Author</th>
+            <th>Department ID</th>
+            <th>Department name</th>
         </tr>
         </thead>
         <tbody>
-            <tr th:each="report: ${reports}">
-                <td th:text="${report.title}"/>
-                <td th:text="${report.author.name}"/>
-            </tr>
+        <tr th:each="department: ${departments}">
+            <td th:text="${department.id}"/>
+            <td th:text="${department.departmentName}"/>
+        </tr>
         </tbody>
     </table>
-    <a class="btn btn-dark" href="/index/create_report">Return</a>
+    <a class="btn btn-dark" href="/index/create_department">Return</a>
     <div class="footer">
         <hr>
         <p>All rights reserved &copy;&nbsp;2020</p>
