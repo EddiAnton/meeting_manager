@@ -29,14 +29,14 @@ public class MeetingManagerController {
     @RequestMapping
     public String getLastMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getLastMeeting());
-        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         return "/index";
     }
 
     @RequestMapping(value = "/search_meeting")
     public String mainPage(Model model) {
-        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         return "/search_meeting";
     }
@@ -81,7 +81,7 @@ public class MeetingManagerController {
     @RequestMapping(value = "/view_meeting_list")
     public String getAllMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getAllMeeting());
-        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         return "/view_meeting_list";
     }
@@ -96,7 +96,7 @@ public class MeetingManagerController {
     @RequestMapping(value = "/create_meeting")
     public String createPage(Model model) {
         model.addAttribute("meeting", new Meeting());
-        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", meetingService.getAllDepartment());
         model.addAttribute("reports", meetingService.getAllReport());
         return "/create_meeting";
@@ -111,7 +111,7 @@ public class MeetingManagerController {
     @RequestMapping(value = "/create_report")
     public String createReport(Model model) {
         model.addAttribute("report", new Report());
-        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("employees", employeeService.getAllEmployee());
         return "/create_report";
     }
 
@@ -137,14 +137,14 @@ public class MeetingManagerController {
 
     @RequestMapping(value = "/create_employee/submit", method = RequestMethod.POST)
     public String submitEmployee(@ModelAttribute Employee employee, Model model) {
-        meetingService.saveEmployee(employee);
-        model.addAttribute("employees", meetingService.getAllEmployee());
+        employeeService.saveEmployee(employee);
+        model.addAttribute("employees", employeeService.getAllEmployeeDesc());
         return "/view_employee_list";
     }
 
     @RequestMapping(value = "/view_employee_list", method = RequestMethod.GET)
     public String viewEmployeeList(Model model) {
-        model.addAttribute("employees", meetingService.getAllEmployee());
+        model.addAttribute("employees", employeeService.getAllEmployee());
         return "/view_employee_list";
     }
 }

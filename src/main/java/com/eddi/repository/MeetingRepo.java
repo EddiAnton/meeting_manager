@@ -1,5 +1,6 @@
 package com.eddi.repository;
 
+import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -24,5 +25,4 @@ public interface MeetingRepo extends CrudRepository<Meeting, Integer> {
     @Query(value = "SELECT * FROM meeting WHERE date_spending IS NOT NULL ORDER BY date_spending DESC LIMIT 5;",
            nativeQuery = true)
     public List<Meeting> findLastMeeting();
-
 }

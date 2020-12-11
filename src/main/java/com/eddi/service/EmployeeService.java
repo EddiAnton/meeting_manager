@@ -24,4 +24,24 @@ public class EmployeeService {
                         Spliterator.NONNULL), false)
                 .collect(Collectors.toList());
     }
+
+    public List<Employee> getAllEmployee() {
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(employeeRepo.findAll().iterator(),
+                        Spliterator.NONNULL), false)
+                .collect(Collectors.toList());
+    }
+
+    public List<Employee> getAllEmployeeDesc() {
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(employeeRepo.findAllEmployee().iterator(),
+                        Spliterator.NONNULL), false)
+                .collect(Collectors.toList());
+    }
+
+    public void saveEmployee(Employee employee) {
+        employeeRepo.save(employee);
+
+        System.out.println(employee);
+    }
 }

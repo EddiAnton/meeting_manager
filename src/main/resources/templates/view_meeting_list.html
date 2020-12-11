@@ -34,16 +34,16 @@
             </div>
         </nav>
         <div class="header">
-          <h4>Список проведенных совещаний</h4>
+          <h4>List of meetings held</h4>
         </div>
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>ID совещания</th>
-                <th>Дата Время</th>
-                <th>Тема</th>
-                <th>Подразделение</th>
-                <th>Ответственный</th>
+                <th>Meeting ID</th>
+                <th>Date Time</th>
+                <th>Theme</th>
+                <th>Department</th>
+                <th>Responsible person</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -58,14 +58,14 @@
                 <td th:text="${meeting.organizedEmployee.name}"/>
                 <td>
                     <input type="hidden" name="meetingId" th:value="${meeting.id}">
-                    <input class="btn btn-dark" type="submit" value="Показать участников">
+                    <input class="btn btn-dark" type="submit" value="Show participants">
                 </td>
 
             </form>
             </tbody>
           </table>
-        <a class="btn btn-dark" href="/index/create_meeting">Добавить новое совещание</a>
-        <a class="btn btn-dark" href="/index/search_meeting">Назад</a>
+        <a class="btn btn-dark" href="/index/create_meeting">Add a new meeting</a>
+        <a class="btn btn-dark" href="/index/search_meeting">Return</a>
         <div class="footer">
             <hr>
             <p>All rights reserved &copy;&nbsp;2020</p>
