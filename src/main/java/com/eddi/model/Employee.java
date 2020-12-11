@@ -31,6 +31,9 @@ public class Employee {
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
+    @Column(name = "email")
+    private String email;
+
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
@@ -74,6 +77,14 @@ public class Employee {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Department getDepartment() {

@@ -105,4 +105,8 @@ public class MeetingService {
                         Spliterator.NONNULL), false)
                 .collect(Collectors.toList());
     }
+
+    public void sendEmailNotification(List<Meeting> meetings) {
+
+    }
 }

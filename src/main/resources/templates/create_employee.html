@@ -47,6 +47,8 @@
                 <label>Date of Birth:</label>
                 <input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{dateOfBirth}">
             </div>
+            <p>Email: <input type="text" size="80" placeholder="Enter email"
+                                     id="email" th:field="*{email}"></p>
             <p>Department: <select class="browser-default custom-select" id="department_id" th:field="*{department}">
                 <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
             </select>

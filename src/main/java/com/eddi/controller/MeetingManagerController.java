@@ -5,6 +5,7 @@ import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import com.eddi.model.Report;
 import com.eddi.service.DepartmentService;
+import com.eddi.service.EmailService;
 import com.eddi.service.EmployeeService;
 import com.eddi.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class MeetingManagerController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    EmailService emailService = new EmailService("meeting.manager2.0@gmail.com","m.m.final_2.0");
 
     @RequestMapping
     public String getLastMeetings(Model model) {
@@ -110,6 +113,10 @@ public class MeetingManagerController {
     @RequestMapping(value = "/create_meeting/submit", method = RequestMethod.POST)
     public String submitMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
+
+        String fromEmail = "meeting.manager2.0@gmail.com";
+        String toEmail;
+
         return "redirect:../";
     }
 

@@ -44,6 +44,7 @@
         <tr>
             <th>Employee name</th>
             <th>Date of Birth</th>
+            <th>Email</th>
             <th>Department</th>
         </tr>
         </thead>
@@ -51,6 +52,7 @@
             <tr th:each="employee: ${employees}">
                 <td th:text="${employee.name}"/>
                 <td th:text="${employee.dateOfBirth}"/>
+                <td th:text="${employee.email}"/>
                 <td th:text="${employee.department.departmentName}"/>
             </tr>
         </tbody>
