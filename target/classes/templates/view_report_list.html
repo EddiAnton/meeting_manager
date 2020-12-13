@@ -50,7 +50,7 @@
         </thead>
         <tbody>
         <form th:each="report: ${reports}" action="#" th:action="@{/index/view_report_list/submit}" method="POST">
-            <tr th:each="report: ${reports}">
+            <tr>
                 <td th:text="${report.title}"/>
                 <td th:text="${report.author.name}"/>
                 <td>

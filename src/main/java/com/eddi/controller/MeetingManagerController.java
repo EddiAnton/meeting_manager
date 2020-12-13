@@ -139,14 +139,18 @@ public class MeetingManagerController {
     }
 
     @RequestMapping(value = "/view_report_list", method = RequestMethod.GET)
-    public String getContent(Model model) {
+    public String viewReportList(Model model) {
         model.addAttribute("reports", meetingService.getAllReport());
         return "/view_report_list";
     }
 
     @RequestMapping(value = "/view_report_list/submit", method = RequestMethod.POST)
-    public String viewReportList(@RequestParam("reportId") String reportId, Model model) {
+    public String viewContent(@RequestParam("reportId") String reportId, Model model) {
         model.addAttribute("report", meetingService.getReportById(reportId));
+
+        System.out.println(reportId);
+        System.out.println(model);
+
         return "/view_report_content";
     }
 
