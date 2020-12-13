@@ -147,10 +147,6 @@ public class MeetingManagerController {
     @RequestMapping(value = "/view_report_list/submit", method = RequestMethod.POST)
     public String viewContent(@RequestParam("reportId") String reportId, Model model) {
         model.addAttribute("report", meetingService.getReportById(reportId));
-
-        System.out.println(reportId);
-        System.out.println(model);
-
         return "/view_report_content";
     }
 

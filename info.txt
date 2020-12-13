@@ -30,6 +30,7 @@ CREATE TABLE employee
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255),
     date_of_birth DATE,
+    email VARCHAR(64),
     department_id INT,
     FOREIGN KEY (department_id) REFERENCES department(id)
     );
