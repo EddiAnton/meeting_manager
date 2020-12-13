@@ -1,13 +1,6 @@
 package com.eddi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "report")
@@ -25,7 +18,8 @@ public class Report {
     @JoinColumn(name = "author_id")
     private Employee author;
 
-    @Column(name = "content")
+    @Column(name = "content",
+            columnDefinition="TEXT")
     private String content;
 
     public Report() {}
@@ -54,11 +48,11 @@ public class Report {
         this.author = author;
     }
 
-    public String getText() {
+    public String getContent() {
         return content;
     }
 
-    public void setText(String text) {
+    public void setContent(String content) {
         this.content = content;
     }
 }

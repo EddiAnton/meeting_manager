@@ -64,6 +64,11 @@ public class MeetingService {
                 .collect(Collectors.toList());
     }
 
+    public Report getReportById(String reportId) {
+        Integer id = Integer.parseInt(reportId);
+        return reportRepo.findReportById(id);
+    }
+
     public List<Meeting> findByTopicContainingAndDateSpendingBetween(String topic, String fromDate, String toDate) {
         Date from = null;
         Date to = null;
@@ -104,9 +109,5 @@ public class MeetingService {
                 .stream(Spliterators.spliteratorUnknownSize(meetingRepo.findLastMeeting().iterator(),
                         Spliterator.NONNULL), false)
                 .collect(Collectors.toList());
-    }
-
-    public void sendEmailNotification(List<Meeting> meetings) {
-
     }
 }

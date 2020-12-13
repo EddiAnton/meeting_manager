@@ -48,8 +48,8 @@
                 <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
             </select>
             </p>
-            <!--<p><textarea cols=80 rows=10 id="content" placeholder="Report text"
-                         th:field="*{content}"></textarea>-->
+            <p><textarea cols=80 rows=10 id="content" placeholder="Report text"
+                         th:field="*{content}"></textarea></p>
 
             <input class="btn btn-dark" type="submit" value="Save">
             <input class="btn btn-dark" type="reset" value="Cancel">

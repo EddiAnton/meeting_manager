@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/index/create_meeting">New meeting</a>
-                </li>
+                </li>"igor.weisert@gmail.com"
                 <li class="nav-item">
                     <a class="nav-link" href="/index/search_meeting">Search meeting</a>
                 </li>
@@ -37,23 +37,12 @@
         </div>
     </nav>
     <div class="header">
-        <h4>List of meeting participants</h4>
+        <h4 th:text="${report.title}"/>
     </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Participant</th>
-            <th>Department</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="participant: ${participants}">
-            <td th:text="${participant.name}"/>
-            <td th:text="${participant.department.departmentName}"/>
-        </tr>
-        </tbody>
-    </table>
-    <a class="btn btn-dark" href="/index/view_meeting_list">Return</a>
+    <div>
+        <p th:text="${report.content}"/>
+    </div>
+    <a class="btn btn-dark" href="/view_report_list">Return</a>
     <div class="footer">
         <hr>
         <p>All rights reserved &copy;&nbsp;2020</p>

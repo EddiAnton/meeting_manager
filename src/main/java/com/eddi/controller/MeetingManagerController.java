@@ -32,7 +32,8 @@ public class MeetingManagerController {
     @Autowired
     private DepartmentService departmentService;
 
-    EmailService emailService = new EmailService("meeting.manager2.0@gmail.com","m.m.final_2.0");
+    @Autowired
+    private EmailService emailService;
 
     @RequestMapping
     public String getLastMeetings(Model model) {
@@ -114,8 +115,11 @@ public class MeetingManagerController {
     public String submitMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
 
-        String fromEmail = "meeting.manager2.0@gmail.com";
-        String toEmail;
+        List<Employee> participants = new ArrayList<>(meeting.getEmployees());
+        for(Employee participant: participants) {
+            String toEmail = participant.getEmail();
+            emailService.sendMail(toEmail, "New meeting", "You have a new meeting scheduled.");
+        }
 
         return "redirect:../";
     }
@@ -135,9 +139,15 @@ public class MeetingManagerController {
     }
 
     @RequestMapping(value = "/view_report_list", method = RequestMethod.GET)
-    public String viewReportList(Model model) {
+    public String getContent(Model model) {
         model.addAttribute("reports", meetingService.getAllReport());
         return "/view_report_list";
+    }
+
+    @RequestMapping(value = "/view_report_list/submit", method = RequestMethod.POST)
+    public String viewReportList(@RequestParam("reportId") String reportId, Model model) {
+        model.addAttribute("report", meetingService.getReportById(reportId));
+        return "/view_report_content";
     }
 
     @RequestMapping(value = "/create_employee")

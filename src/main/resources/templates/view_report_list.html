@@ -44,13 +44,21 @@
         <tr>
             <th>Theme of the report</th>
             <th>Author</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
+        <form th:each="report: ${reports}" action="#" th:action="@{/index/view_report_list/submit}" method="POST">
             <tr th:each="report: ${reports}">
                 <td th:text="${report.title}"/>
                 <td th:text="${report.author.name}"/>
+                <td>
+                    <input type="hidden" name="reportId" th:value="${report.id}">
+                    <input class="btn btn-dark" type="submit" value="Show content">
+                </td>
             </tr>
+        </form>
         </tbody>
     </table>
     <a class="btn btn-dark" href="/index/create_report">Return</a>
