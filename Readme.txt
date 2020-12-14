@@ -1,4 +1,4 @@
-Meeting-Manager-1-0.
+Meeting-Manager-2-0.
 To deploy the application, the machine must have the following installed:
 --JavaSE (JRE) 1.8.x--
 --Apache Tomcat 8.5.x -
