@@ -30,7 +30,7 @@ To run the application on your local machine, enter the address
 (http: // localhost: 8080 / index) in the search bar.
 
 The first version of the application can be viewed at:
-https://meeting-manager-1-0.herokuapp.com/search_page
+https://meeting-manager-2-0.herokuapp.com/index
 
 
 
