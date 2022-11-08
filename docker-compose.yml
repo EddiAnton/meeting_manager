@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:14.5-alpine
+    container_name: meeting_manager
+    environment:
+      - "POSTGRES_DB:meeting_manager"
+      - "POSTGRES_PASSWORD=qwe123"
+      - "POSTGRES_USER=eduard"
+    ports:
+      - "5432:5432"
+    volumes:
+      - .:/docker-entrypoint-initdb.d
