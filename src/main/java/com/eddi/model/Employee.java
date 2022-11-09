@@ -41,10 +41,10 @@ public class Employee {
     @ManyToMany
     @JoinTable(
             name = "participants",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "meeting_id")
+            joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "meeting_id", referencedColumnName = "id")
     )
-    private List<Meeting> meetings;
+    private List<Meeting> meetings = new java.util.ArrayList<>();
 
     public Employee() {}
 

@@ -115,11 +115,12 @@ public class MeetingManagerController {
     public String submitMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
 
-        List<Employee> participants = new ArrayList<>(meeting.getEmployees());
-        for(Employee participant: participants) {
-            String toEmail = participant.getEmail();
-            emailService.sendMail(toEmail, "New meeting", "You have a new meeting scheduled.");
-        }
+//        TODO: не проходит авторизация, ошибка пользователя и пароля
+//        List<Employee> participants = new ArrayList<>(meeting.getEmployees());
+//        for(Employee participant: participants) {
+//            String toEmail = participant.getEmail();
+//            emailService.sendMail(toEmail, "New meeting", "You have a new meeting scheduled.");
+//        }
 
         return "redirect:../";
     }
