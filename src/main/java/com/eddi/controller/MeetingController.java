@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/index")
-public class MeetingManagerController {
+public class MeetingController {
 
     @Autowired
     private MeetingService meetingService;
@@ -41,6 +41,11 @@ public class MeetingManagerController {
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
         return "/index";
+    }
+
+    @RequestMapping(value = "/administration")
+    public String getAdministration() {
+        return "/administration";
     }
 
     @RequestMapping(value = "/search_meeting")
@@ -124,70 +129,4 @@ public class MeetingManagerController {
 
         return "redirect:../";
     }
-
-    @RequestMapping(value = "/create_report")
-    public String createReport(Model model) {
-        model.addAttribute("report", new Report());
-        model.addAttribute("employees", employeeService.getAllEmployee());
-        return "/create_report";
-    }
-
-    @RequestMapping(value = "/create_report/submit", method = RequestMethod.POST)
-    public String submitReport(@ModelAttribute Report report, Model model) {
-        meetingService.saveReport(report);
-        model.addAttribute("reports", meetingService.getAllReport());
-        return "/view_report_list";
-    }
-
-    @RequestMapping(value = "/view_report_list", method = RequestMethod.GET)
-    public String viewReportList(Model model) {
-        model.addAttribute("reports", meetingService.getAllReport());
-        return "/view_report_list";
-    }
-
-    @RequestMapping(value = "/view_report_list/submit", method = RequestMethod.POST)
-    public String viewContent(@RequestParam("reportId") String reportId, Model model) {
-        model.addAttribute("report", meetingService.getReportById(reportId));
-        return "/view_report_content";
-    }
-
-    @RequestMapping(value = "/create_employee")
-    public String createEmployee(Model model) {
-        model.addAttribute("employee", new Employee());
-        model.addAttribute("departments", departmentService.getAllDepartment());
-        return "/create_employee";
-    }
-
-    @RequestMapping(value = "/create_employee/submit", method = RequestMethod.POST)
-    public String submitEmployee(@ModelAttribute Employee employee, Model model) {
-        employeeService.saveEmployee(employee);
-        model.addAttribute("employees", employeeService.getAllEmployeeDesc());
-        return "/view_employee_list";
-    }
-
-    @RequestMapping(value = "/view_employee_list", method = RequestMethod.GET)
-    public String viewEmployeeList(Model model) {
-        model.addAttribute("employees", employeeService.getAllEmployee());
-        return "/view_employee_list";
-    }
-
-    @RequestMapping(value = "/create_department")
-    public String createDepartment(Model model) {
-        model.addAttribute("department", new Department());
-        return "/create_department";
-    }
-
-    @RequestMapping(value = "/create_department/submit", method = RequestMethod.POST)
-    public String submitDepartment(@ModelAttribute Department department, Model model) {
-        departmentService.saveDepartment(department);
-        model.addAttribute("departments", departmentService.getAllDepartment());
-        return "/view_department_list";
-    }
-
-    @RequestMapping(value = "/view_department_list", method = RequestMethod.GET)
-    public String viewDepartmentList(Model model) {
-        model.addAttribute("departments", departmentService.getAllDepartment());
-        return "/view_department_list";
-    }
 }
-
