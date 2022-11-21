@@ -2,7 +2,6 @@ package com.eddi.service;
 
 import com.eddi.model.Department;
 import com.eddi.repository.DepartmentRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +13,14 @@ import java.util.stream.StreamSupport;
 @Service
 public class DepartmentService {
 
-    @Autowired
-    private DepartmentRepo departmentRepo;
+    private final DepartmentRepo departmentRepo;
+
+    public DepartmentService(DepartmentRepo departmentRepo) {
+        this.departmentRepo = departmentRepo;
+    }
 
     public void saveDepartment(Department department) {
         departmentRepo.save(department);
-
-        System.out.println(department);
     }
 
     public List<Department> getAllDepartment() {

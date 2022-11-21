@@ -1,21 +1,13 @@
 package com.eddi.service;
 
-import com.eddi.model.Department;
-import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import com.eddi.model.Report;
-import com.eddi.repository.DepartmentRepo;
-import com.eddi.repository.EmployeeRepo;
 import com.eddi.repository.MeetingRepo;
 import com.eddi.repository.ReportRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.plaf.PanelUI;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Spliterator;
@@ -26,28 +18,21 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class MeetingService {
-    @Autowired
-    private MeetingRepo meetingRepo;
+    private final MeetingRepo meetingRepo;
 
-    @Autowired
-    private EmployeeRepo employeeRepo;
+    private final ReportRepo reportRepo;
 
-    @Autowired
-    private DepartmentRepo departmentRepo;
-
-    @Autowired
-    private ReportRepo reportRepo;
+    public MeetingService(MeetingRepo meetingRepo, ReportRepo reportRepo) {
+        this.meetingRepo = meetingRepo;
+        this.reportRepo = reportRepo;
+    }
 
     public void saveMeeting(Meeting meeting) {
         meetingRepo.save(meeting);
-
-        System.out.println(meeting);
     }
 
     public void saveReport(Report report) {
         reportRepo.save(report);
-
-        System.out.println(report);
     }
 
     public List<Meeting> getAllMeeting() {
@@ -70,8 +55,8 @@ public class MeetingService {
     }
 
     public List<Meeting> findByTopicContainingAndDateSpendingBetween(String topic, String fromDate, String toDate) {
-        Date from = null;
-        Date to = null;
+        Date from;
+        Date to;
         try {
             from = new SimpleDateFormat("yyyy-MM-dd").parse(fromDate);
         }

@@ -12,9 +12,9 @@ public interface EmployeeRepo extends CrudRepository<Employee, Integer> {
 
     @Query(value = "SELECT * FROM employee WHERE id IN (SELECT employee_id FROM participants WHERE meeting_id=?1)",
             nativeQuery = true)
-    public List<Employee> findByMeetingAllEmployees(Integer id);
+    List<Employee> findByMeeting(Integer id);
 
     @Query(value = "SELECT * FROM employee ORDER BY id DESC;",
             nativeQuery = true)
-    public List<Employee> findAllEmployee();
+    List<Employee> findAllDesc();
 }
