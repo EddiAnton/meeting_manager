@@ -1,13 +1,7 @@
 package com.eddi.controller;
 
-import com.eddi.model.Department;
-import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
-import com.eddi.model.Report;
-import com.eddi.service.DepartmentService;
-import com.eddi.service.EmailService;
-import com.eddi.service.EmployeeService;
-import com.eddi.service.MeetingService;
+import com.eddi.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +25,9 @@ public class MeetingController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    @Autowired
+    private ReportService reportService;
 
     @Autowired
     private EmailService emailService;
@@ -112,7 +109,7 @@ public class MeetingController {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
-        model.addAttribute("reports", meetingService.getAllReport());
+        model.addAttribute("reports", reportService.getAllReport());
         return "/create_meeting";
     }
 
@@ -126,7 +123,6 @@ public class MeetingController {
 //            String toEmail = participant.getEmail();
 //            emailService.sendMail(toEmail, "New meeting", "You have a new meeting scheduled.");
 //        }
-
         return "redirect:../";
     }
 }
