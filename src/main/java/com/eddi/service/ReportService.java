@@ -4,6 +4,7 @@ import com.eddi.model.Report;
 import com.eddi.repository.ReportRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Spliterator;
 import java.util.Spliterators;
@@ -20,6 +21,8 @@ public class ReportService {
     }
 
     public void saveReport(Report report) {
+        Date dateCreated = new Date();
+        report.setDateCreated(dateCreated);
         reportRepo.save(report);
     }
 

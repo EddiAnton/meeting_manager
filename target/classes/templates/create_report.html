@@ -44,12 +44,12 @@
                                     id="title" th:field="*{title}"></p>
             <p>Автор: <select class="browser-default custom-select" id="author_id"
                               th:field="*{author}">
-                <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
+                <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
             </select>
             </p>
             <p><textarea cols=80 rows=10 id="content" placeholder="Содержание доклада"
-                         th:field="*{content}"></textarea></p>
-
+                         th:field="*{content}"></textarea>
+            </p>
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Отмена">
             <a class="btn btn-dark" href="/index/view_report_list">Показать все</a>

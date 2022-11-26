@@ -50,13 +50,13 @@
                                       id="organized_department_id"
                                       th:field="*{department}">
                 <option th:each="department : ${departments}" th:value="${department.id}"
-                        th:text="${department.departmentName}"/>
+                        th:text="${department.departmentName}"></option>
             </select>
             </p>
             <p>Организатор: <select class="browser-default custom-select"
                                     id="organized_employee_id"
                                     th:field="*{organizedEmployee}">
-                <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
+                <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
             </select>
             </p>
             <p>Отметить участников:</p>
@@ -66,10 +66,10 @@
                         <input type="checkbox" th:id="${'cb_' + stat.index}" name="employees" th:value="${employee.id}">
                     </td>
                     <td>
-                        <label th:for="${'cb_' + stat.index}" th:text="${employee.name}"/>
+                        <label th:for="${'cb_' + stat.index}" th:text="${employee.name}"></label>
                     </td>
                     <td>
-                        <label th:for="${'cb_' + stat.index}" th:text="${employee.department.departmentName}"/>
+                        <label th:for="${'cb_' + stat.index}" th:text="${employee.department.departmentName}"></label>
                     </td>
                 </tr>
             </table>
@@ -79,7 +79,7 @@
                     <p>Тема доклада: <select class="browser-default custom-select"
                                              id="report_id"
                                              th:field="*{report}">
-                        <option th:each="report : ${reports}" th:value="${report.id}" th:text="${report.title}"/>
+                        <option th:each="report : ${reports}" th:value="${report.id}" th:text="${report.title}"></option>
                     </select>
                     </p>
                 </div>

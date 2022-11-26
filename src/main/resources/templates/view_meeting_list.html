@@ -53,15 +53,16 @@
         <tbody>
         <form th:each="meeting: ${meetings}" action="#" th:action="@{/index/view_meeting_list/submit}" method="POST">
             <tr>
-                <td th:text="${meeting.id}"/>
-                <td th:text="${meeting.dateSpending}"/>
-                <td th:text="${meeting.topic}"/>
-                <td th:text="${meeting.department.departmentName}"/>
-                <td th:text="${meeting.organizedEmployee.name}"/>
+                <td th:text="${meeting.id}"></td>
+                <td th:text="${meeting.dateSpending}"></td>
+                <td th:text="${meeting.topic}"></td>
+                <td th:text="${meeting.department.departmentName}"></td>
+                <td th:text="${meeting.organizedEmployee.name}"></td>
                 <td>
                     <input type="hidden" name="meetingId" th:value="${meeting.id}">
                     <input class="btn btn-dark" type="submit" value="Показать участников">
                 </td>
+            </tr>
         </form>
         </tbody>
     </table>

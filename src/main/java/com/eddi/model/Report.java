@@ -1,10 +1,20 @@
 package com.eddi.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "report")
 public class Report {
+    private static final String PATTERN = "yyyy-MM-dd";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +31,9 @@ public class Report {
     @Column(name = "content",
             columnDefinition="TEXT")
     private String content;
+
+    @Column(name = "date_created")
+    private Date dateCreated;
 
     public Report() {}
 
@@ -54,5 +67,16 @@ public class Report {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getDateCreated() {
+        if (dateCreated != null) {
+            return new SimpleDateFormat(PATTERN).format(dateCreated);
+        }
+        return "";
+    }
+
+    public void setDateCreated(Date dateCreated) {
+            this.dateCreated = dateCreated;
     }
 }

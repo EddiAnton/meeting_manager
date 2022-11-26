@@ -3,6 +3,14 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.23">
     <root id="1">
       <ServerVersion>14.5</ServerVersion>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+13768||-9223372036854775808|c|G
+13768||10|c|G
+13768||10|C|G
+13768||10|T|G</Grants>
       <DateStyle>mdy</DateStyle>
       <TimeZones>true ACDT
 true ACSST
@@ -787,8 +795,8 @@ false Z
 false Zulu
 false posixrules
 </TimeZones>
-      <IntrospectionStateNumber>752</IntrospectionStateNumber>
-      <StartupTime>1669044548</StartupTime>
+      <IntrospectionStateNumber>749</IntrospectionStateNumber>
+      <StartupTime>1669496773</StartupTime>
     </root>
     <database id="2" parent="1" name="eduard">
       <ObjectId>16384</ObjectId>
@@ -807,7 +815,7 @@ false posixrules
 13403||-9223372036854775808|U|G
 13403||10|U|G</Grants>
       <Owner>eduard</Owner>
-      <IntrospectionStateNumber>753</IntrospectionStateNumber>
+      <IntrospectionStateNumber>750</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|16386|16387|1
 sequence|table|16392|16393|1
@@ -901,7 +909,7 @@ sequence|table|16409|16410|1
       <Comment>standard public schema</Comment>
       <StateNumber>527</StateNumber>
       <Owner>eduard</Owner>
-      <IntrospectionStateNumber>753</IntrospectionStateNumber>
+      <IntrospectionStateNumber>750</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="22" parent="3" name="plpgsql">
@@ -1005,74 +1013,74 @@ sequence|table|16409|16410|1
     <sequence id="34" parent="21" name="department_id_seq">
       <ObjectId>16386</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>739</StateNumber>
+      <StateNumber>736</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="35" parent="21" name="employee_id_seq">
       <ObjectId>16392</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="36" parent="21" name="meeting_id_seq">
       <ObjectId>16400</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="37" parent="21" name="report_id_seq">
       <ObjectId>16409</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>743</StateNumber>
+      <StateNumber>740</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
     <table id="38" parent="21" name="department">
       <ObjectId>16387</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>744</StateNumber>
+      <StateNumber>741</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
     <table id="39" parent="21" name="employee">
       <ObjectId>16393</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>744</StateNumber>
+      <StateNumber>741</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
     <table id="40" parent="21" name="meeting">
       <ObjectId>16401</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>745</StateNumber>
+      <StateNumber>742</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
     <table id="41" parent="21" name="participants">
       <ObjectId>16406</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>748</StateNumber>
+      <StateNumber>745</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
     <table id="42" parent="21" name="report">
       <ObjectId>16410</ObjectId>
       <Owner>eduard</Owner>
-      <StateNumber>747</StateNumber>
+      <StateNumber>744</StateNumber>
       <AccessMethodId>2</AccessMethodId>
     </table>
     <column id="43" parent="38" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>739</StateNumber>
+      <StateNumber>736</StateNumber>
       <TypeId>23</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
     <column id="44" parent="38" name="department_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>739</StateNumber>
+      <StateNumber>736</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="45" parent="38" name="department_pkey">
       <ObjectId>16390</ObjectId>
-      <StateNumber>739</StateNumber>
+      <StateNumber>736</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1082,7 +1090,7 @@ sequence|table|16409|16410|1
     </index>
     <key id="46" parent="38" name="department_pkey">
       <ObjectId>16391</ObjectId>
-      <StateNumber>739</StateNumber>
+      <StateNumber>736</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>department_pkey</UnderlyingIndexName>
@@ -1091,37 +1099,61 @@ sequence|table|16409|16410|1
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <TypeId>23</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
     <column id="48" parent="39" name="date_of_birth">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="49" parent="39" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="50" parent="39" name="name">
+    <column id="50" parent="39" name="login">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="51" parent="39" name="department_id">
+    <column id="51" parent="39" name="name">
       <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>737</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="52" parent="39" name="password">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>737</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="53" parent="39" name="role">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>737</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="54" parent="39" name="status">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>737</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="55" parent="39" name="department_id">
+      <Position>9</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="52" parent="39" name="employee_pkey">
+    <index id="56" parent="39" name="employee_pkey">
       <ObjectId>16398</ObjectId>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1129,16 +1161,16 @@ sequence|table|16409|16410|1
       <ClassIds>1978</ClassIds>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="53" parent="39" name="employee_pkey">
+    <key id="57" parent="39" name="employee_pkey">
       <ObjectId>16399</ObjectId>
-      <StateNumber>740</StateNumber>
+      <StateNumber>737</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>employee_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="54" parent="39" name="fkbejtwvg9bxus2mffsm3swj3u9">
+    <foreign-key id="58" parent="39" name="fkbejtwvg9bxus2mffsm3swj3u9">
       <ObjectId>16417</ObjectId>
-      <StateNumber>744</StateNumber>
+      <StateNumber>741</StateNumber>
       <ColNames>department_id</ColNames>
       <RefTableId>16387</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1146,48 +1178,48 @@ sequence|table|16409|16410|1
       <RefKeyName>department_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="55" parent="40" name="id">
+    <column id="59" parent="40" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <TypeId>23</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
-    <column id="56" parent="40" name="date_spending">
+    <column id="60" parent="40" name="date_spending">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="57" parent="40" name="topic">
+    <column id="61" parent="40" name="topic">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="58" parent="40" name="organized_department_id">
+    <column id="62" parent="40" name="organized_department_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="59" parent="40" name="organized_employee_id">
+    <column id="63" parent="40" name="organized_employee_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="60" parent="40" name="report_id">
+    <column id="64" parent="40" name="report_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="61" parent="40" name="meeting_pkey">
+    <index id="65" parent="40" name="meeting_pkey">
       <ObjectId>16404</ObjectId>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1195,16 +1227,16 @@ sequence|table|16409|16410|1
       <ClassIds>1978</ClassIds>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="62" parent="40" name="meeting_pkey">
+    <key id="66" parent="40" name="meeting_pkey">
       <ObjectId>16405</ObjectId>
-      <StateNumber>741</StateNumber>
+      <StateNumber>738</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>meeting_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="63" parent="40" name="fkarvopgy55ug2jipac6sto9xon">
+    <foreign-key id="67" parent="40" name="fkarvopgy55ug2jipac6sto9xon">
       <ObjectId>16422</ObjectId>
-      <StateNumber>745</StateNumber>
+      <StateNumber>742</StateNumber>
       <ColNames>organized_department_id</ColNames>
       <RefTableId>16387</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1212,9 +1244,9 @@ sequence|table|16409|16410|1
       <RefKeyName>department_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="64" parent="40" name="fkbnw8y747snryfqe20uu7ph158">
+    <foreign-key id="68" parent="40" name="fkbnw8y747snryfqe20uu7ph158">
       <ObjectId>16427</ObjectId>
-      <StateNumber>746</StateNumber>
+      <StateNumber>743</StateNumber>
       <ColNames>organized_employee_id</ColNames>
       <RefTableId>16393</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1222,9 +1254,9 @@ sequence|table|16409|16410|1
       <RefKeyName>employee_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="65" parent="40" name="fkcuv30264yjj6r68mayfb7sgj2">
+    <foreign-key id="69" parent="40" name="fkcuv30264yjj6r68mayfb7sgj2">
       <ObjectId>16432</ObjectId>
-      <StateNumber>747</StateNumber>
+      <StateNumber>744</StateNumber>
       <ColNames>report_id</ColNames>
       <RefTableId>16410</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1232,23 +1264,23 @@ sequence|table|16409|16410|1
       <RefKeyName>report_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="66" parent="41" name="meeting_id">
+    <column id="70" parent="41" name="meeting_id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>742</StateNumber>
+      <StateNumber>739</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="67" parent="41" name="employee_id">
+    <column id="71" parent="41" name="employee_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>742</StateNumber>
+      <StateNumber>739</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="68" parent="41" name="fke8yai8s8movfspwlgqdjor9hj">
+    <foreign-key id="72" parent="41" name="fke8yai8s8movfspwlgqdjor9hj">
       <ObjectId>16442</ObjectId>
-      <StateNumber>749</StateNumber>
+      <StateNumber>746</StateNumber>
       <ColNames>meeting_id</ColNames>
       <RefTableId>16401</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1256,9 +1288,9 @@ sequence|table|16409|16410|1
       <RefKeyName>meeting_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="69" parent="41" name="fkh0ijvf566a6fs6crhir8x511b">
+    <foreign-key id="73" parent="41" name="fkh0ijvf566a6fs6crhir8x511b">
       <ObjectId>16437</ObjectId>
-      <StateNumber>748</StateNumber>
+      <StateNumber>745</StateNumber>
       <ColNames>employee_id</ColNames>
       <RefTableId>16393</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1266,35 +1298,35 @@ sequence|table|16409|16410|1
       <RefKeyName>employee_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="70" parent="42" name="id">
+    <column id="74" parent="42" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>743</StateNumber>
+      <StateNumber>740</StateNumber>
       <TypeId>23</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
-    <column id="71" parent="42" name="content">
+    <column id="75" parent="42" name="content">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>743</StateNumber>
+      <StateNumber>740</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="72" parent="42" name="title">
+    <column id="76" parent="42" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>743</StateNumber>
+      <StateNumber>740</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="73" parent="42" name="author_id">
+    <column id="77" parent="42" name="author_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>743</StateNumber>
+      <StateNumber>740</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="74" parent="42" name="report_pkey">
+    <index id="78" parent="42" name="report_pkey">
       <ObjectId>16415</ObjectId>
-      <StateNumber>743</StateNumber>
+      <StateNumber>740</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1302,16 +1334,16 @@ sequence|table|16409|16410|1
       <ClassIds>1978</ClassIds>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="75" parent="42" name="report_pkey">
+    <key id="79" parent="42" name="report_pkey">
       <ObjectId>16416</ObjectId>
-      <StateNumber>743</StateNumber>
+      <StateNumber>740</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>report_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="76" parent="42" name="fkp2kiq7ok7ewnwc4cpp9pml0vf">
+    <foreign-key id="80" parent="42" name="fkp2kiq7ok7ewnwc4cpp9pml0vf">
       <ObjectId>16447</ObjectId>
-      <StateNumber>750</StateNumber>
+      <StateNumber>747</StateNumber>
       <ColNames>author_id</ColNames>
       <RefTableId>16393</RefTableId>
       <RefColPositions>1</RefColPositions>

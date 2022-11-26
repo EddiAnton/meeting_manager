@@ -3,7 +3,7 @@ package com.eddi.controller;
 import com.eddi.model.Report;
 import com.eddi.service.EmployeeService;
 import com.eddi.service.ReportService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/index")
 public class ReportController {
 
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
+    private final ReportService reportService;
 
-    @Autowired
-    private ReportService reportService;
+    public ReportController(EmployeeService employeeService, ReportService reportService) {
+        this.employeeService = employeeService;
+        this.reportService = reportService;
+    }
 
     @RequestMapping(value = "/create_report")
+    @PreAuthorize("hasAuthority('report.create')")
     public String createReport(Model model) {
         model.addAttribute("report", new Report());
         model.addAttribute("employees", employeeService.getAllEmployee());
@@ -29,6 +32,7 @@ public class ReportController {
     }
 
     @RequestMapping(value = "/create_report/submit", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('report.create')")
     public String submitReport(@ModelAttribute Report report, Model model) {
         reportService.saveReport(report);
         model.addAttribute("reports", reportService.getAllReport());
@@ -36,12 +40,14 @@ public class ReportController {
     }
 
     @RequestMapping(value = "/view_report_list", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('report.read')")
     public String viewReportList(Model model) {
         model.addAttribute("reports", reportService.getAllReport());
         return "/view_report_list";
     }
 
     @RequestMapping(value = "/view_report_list/submit", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('report.read')")
     public String viewContent(@RequestParam("reportId") String reportId, Model model) {
         model.addAttribute("report", reportService.getReportById(reportId));
         return "/view_report_content";

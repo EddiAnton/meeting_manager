@@ -1,8 +1,12 @@
 package com.eddi.controller;
 
 import com.eddi.model.Meeting;
-import com.eddi.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.eddi.service.DepartmentService;
+import com.eddi.service.EmailService;
+import com.eddi.service.EmployeeService;
+import com.eddi.service.MeetingService;
+import com.eddi.service.ReportService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,20 +21,19 @@ import java.util.List;
 @RequestMapping("/index")
 public class MeetingController {
 
-    @Autowired
-    private MeetingService meetingService;
+    private final MeetingService meetingService;
+    private final EmployeeService employeeService;
+    private final DepartmentService departmentService;
+    private final ReportService reportService;
+    private final EmailService emailService;
 
-    @Autowired
-    private EmployeeService employeeService;
-
-    @Autowired
-    private DepartmentService departmentService;
-
-    @Autowired
-    private ReportService reportService;
-
-    @Autowired
-    private EmailService emailService;
+    public MeetingController(MeetingService meetingService, EmployeeService employeeService, DepartmentService departmentService, ReportService reportService, EmailService emailService) {
+        this.meetingService = meetingService;
+        this.employeeService = employeeService;
+        this.departmentService = departmentService;
+        this.reportService = reportService;
+        this.emailService = emailService;
+    }
 
     @RequestMapping
     public String getLastMeetings(Model model) {
@@ -41,11 +44,13 @@ public class MeetingController {
     }
 
     @RequestMapping(value = "/administration")
+    @PreAuthorize("hasAuthority('admin.view')")
     public String getAdministration() {
         return "/administration";
     }
 
     @RequestMapping(value = "/search_meeting")
+    @PreAuthorize("hasAuthority('meeting.read')")
     public String mainPage(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
@@ -53,6 +58,7 @@ public class MeetingController {
     }
 
     @RequestMapping(value = "/search_meeting/submit", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('meeting.read')")
     public String search(@RequestParam("topic") String topic,
                          @RequestParam("participant") String participant,
                          @RequestParam("fromDate") String fromDate,
@@ -90,6 +96,7 @@ public class MeetingController {
     }
 
     @RequestMapping(value = "/view_meeting_list")
+    @PreAuthorize("hasAuthority('meeting.read')")
     public String getAllMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getAllMeeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
@@ -98,6 +105,7 @@ public class MeetingController {
     }
 
     @RequestMapping(value = "/view_meeting_list/submit", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('meeting.read')")
     public String getAllMeetingEmployees(@RequestParam("meetingId") String meetingId, Model model) {
         model.addAttribute("participants", employeeService.findByMeetingAllEmployees(meetingId));
         model.addAttribute("departments", departmentService.getAllDepartment());
@@ -105,6 +113,7 @@ public class MeetingController {
     }
 
     @RequestMapping(value = "/create_meeting")
+    @PreAuthorize("hasAuthority('meeting.create')")
     public String createPage(Model model) {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
@@ -114,6 +123,7 @@ public class MeetingController {
     }
 
     @RequestMapping(value = "/create_meeting/submit", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('meeting.create')")
     public String submitMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
 

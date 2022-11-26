@@ -6,10 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
-import java.util.List;
-import java.util.Spliterator;
-import java.util.Spliterators;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -44,7 +41,7 @@ public class MeetingService {
         try {
             to = new SimpleDateFormat("yyyy-MM-dd").parse(toDate);
         } catch (Exception e) {
-            to = new Date(2050, 1, 1);
+            to = new Date(2050, Calendar.FEBRUARY, 1);
         }
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(meetingRepo.findByTopicContainingAndDateSpendingBetween(topic, from, to).iterator(),

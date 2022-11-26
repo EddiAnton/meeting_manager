@@ -43,6 +43,7 @@
         <tr>
             <th>Тема доклада</th>
             <th>Автор</th>
+            <th>Дата создания</th>
             <th></th>
             <th></th>
         </tr>
@@ -50,8 +51,9 @@
         <tbody>
         <form th:each="report: ${reports}" action="#" th:action="@{/index/view_report_list/submit}" method="POST">
             <tr>
-                <td th:text="${report.title}"/>
-                <td th:text="${report.author.name}"/>
+                <td th:text="${report.title}"></td>
+                <td th:text="${report.author.name}"></td>
+                <td th:text="${report.dateCreated}"></td>
                 <td>
                     <input type="hidden" name="reportId" th:value="${report.id}">
                     <input class="btn btn-dark" type="submit" value="Показать содержание">

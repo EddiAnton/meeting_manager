@@ -1,7 +1,9 @@
 package com.eddi.service;
 
+import com.eddi.config.SecurityConfig;
 import com.eddi.model.Employee;
 import com.eddi.repository.EmployeeRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,9 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class EmployeeService {
+
+    @Autowired
+    private SecurityConfig securityConfig;
 
     private final EmployeeRepo employeeRepo;
 
@@ -42,6 +47,8 @@ public class EmployeeService {
     }
 
     public void saveEmployee(Employee employee) {
+        String passwordHash = securityConfig.passwordEncoder().encode(employee.getPassword());
+        employee.setPassword(passwordHash);
         employeeRepo.save(employee);
     }
 }
