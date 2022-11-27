@@ -37,6 +37,18 @@ public class Report {
 
     public Report() {}
 
+    public Report(Integer id,
+                  String title,
+                  Employee author,
+                  String content,
+                  Date dateCreated) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        this.dateCreated = dateCreated;
+    }
+
     public Integer getId() {
         return id;
     }

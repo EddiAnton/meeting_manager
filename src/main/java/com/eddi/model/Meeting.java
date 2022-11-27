@@ -53,6 +53,22 @@ public class Meeting {
 
     public Meeting() {}
 
+    public Meeting(Integer id,
+                   Date dateSpending,
+                   String topic,
+                   Department department,
+                   Employee organizedEmployee,
+                   Report report,
+                   List<Employee> employees) {
+        this.id = id;
+        this.dateSpending = dateSpending;
+        this.topic = topic;
+        this.department = department;
+        this.organizedEmployee = organizedEmployee;
+        this.report = report;
+        this.employees = employees;
+    }
+
     public Integer getId() {
         return id;
     }

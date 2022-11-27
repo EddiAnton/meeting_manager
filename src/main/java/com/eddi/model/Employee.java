@@ -53,6 +53,26 @@ public class Employee {
 
     public Employee() {}
 
+    public Employee(Integer id,
+                    String name,
+                    Date dateOfBirth,
+                    String email,
+                    String login,
+                    String password,
+                    Role role,
+                    Status status,
+                    Department department) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.status = status;
+        this.department = department;
+    }
+
     public Integer getId() {
         return id;
     }

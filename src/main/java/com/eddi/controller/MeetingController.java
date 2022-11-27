@@ -114,7 +114,7 @@ public class MeetingController {
 
     @RequestMapping(value = "/create_meeting")
     @PreAuthorize("hasAuthority('meeting.create')")
-    public String createPage(Model model) {
+    public String createMeeting(Model model) {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
