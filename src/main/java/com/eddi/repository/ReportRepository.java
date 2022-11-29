@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReportRepo extends CrudRepository<Report, Integer> {
+public interface ReportRepository extends CrudRepository<Report, Integer> {
 
     @Query(value = "SELECT * FROM report WHERE id =?1",
             nativeQuery = true)

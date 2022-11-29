@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EmployeeRepo extends CrudRepository<Employee, Integer> {
+public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     Optional<Employee> findByLogin(String login);
 

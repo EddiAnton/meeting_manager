@@ -2,7 +2,7 @@ package com.eddi.service;
 
 import com.eddi.config.SecurityConfig;
 import com.eddi.model.Employee;
-import com.eddi.repository.EmployeeRepo;
+import com.eddi.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +18,9 @@ public class EmployeeService {
     @Autowired
     private SecurityConfig securityConfig;
 
-    private final EmployeeRepo employeeRepo;
+    private final EmployeeRepository employeeRepo;
 
-    public EmployeeService(EmployeeRepo employeeRepo) {
+    public EmployeeService(EmployeeRepository employeeRepo) {
         this.employeeRepo = employeeRepo;
     }
 

@@ -1,7 +1,7 @@
 package com.eddi.service;
 
 import com.eddi.model.Report;
-import com.eddi.repository.ReportRepo;
+import com.eddi.repository.ReportRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -14,9 +14,9 @@ import java.util.stream.StreamSupport;
 @Service
 public class ReportService {
 
-    private final ReportRepo reportRepo;
+    private final ReportRepository reportRepo;
 
-    public ReportService(ReportRepo reportRepo) {
+    public ReportService(ReportRepository reportRepo) {
         this.reportRepo = reportRepo;
     }
 

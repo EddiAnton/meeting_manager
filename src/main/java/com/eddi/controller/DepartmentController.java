@@ -20,14 +20,14 @@ public class DepartmentController {
 
     @RequestMapping(value = "/create_department")
     @PreAuthorize("hasAuthority('department.create')")
-    public String createDepartment(Model model) {
+    public String viewDepartment(Model model) {
         model.addAttribute("department", new Department());
         return "/create_department";
     }
 
     @RequestMapping(value = "/create_department/submit", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('department.create')")
-    public String submitDepartment(@ModelAttribute Department department, Model model) {
+    public String createDepartment(@ModelAttribute Department department, Model model) {
         departmentService.saveDepartment(department);
         model.addAttribute("departments", departmentService.getAllDepartment());
         return "/view_department_list";
@@ -35,7 +35,7 @@ public class DepartmentController {
 
     @RequestMapping(value = "/view_department_list", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('department.read')")
-    public String viewDepartmentList(Model model) {
+    public String getDepartmentList(Model model) {
         model.addAttribute("departments", departmentService.getAllDepartment());
         return "/view_department_list";
     }

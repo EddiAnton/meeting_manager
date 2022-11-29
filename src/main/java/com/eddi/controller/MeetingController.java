@@ -51,7 +51,7 @@ public class MeetingController {
 
     @RequestMapping(value = "/search_meeting")
     @PreAuthorize("hasAuthority('meeting.read')")
-    public String mainPage(Model model) {
+    public String searchPage(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
         return "/search_meeting";
@@ -95,7 +95,7 @@ public class MeetingController {
         return "/view_meeting_list";
     }
 
-    @RequestMapping(value = "/view_meeting_list")
+    @RequestMapping(value = "/view_meeting_list", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('meeting.read')")
     public String getAllMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getAllMeeting());
@@ -114,7 +114,7 @@ public class MeetingController {
 
     @RequestMapping(value = "/create_meeting")
     @PreAuthorize("hasAuthority('meeting.create')")
-    public String createMeeting(Model model) {
+    public String viewMeeting(Model model) {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
@@ -124,7 +124,7 @@ public class MeetingController {
 
     @RequestMapping(value = "/create_meeting/submit", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('meeting.create')")
-    public String submitMeeting(@ModelAttribute Meeting meeting) {
+    public String createMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
 
 //        TODO: не проходит авторизация, ошибка пользователя и пароля

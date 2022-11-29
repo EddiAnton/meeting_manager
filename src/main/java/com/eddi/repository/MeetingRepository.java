@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface MeetingRepo extends CrudRepository<Meeting, Integer> {
+public interface MeetingRepository extends CrudRepository<Meeting, Integer> {
 
     @Query(value = "SELECT * FROM meeting INNER JOIN participants ON meeting.id=participants.meeting_id LEFT JOIN employee ON participants.employee_id=employee.id WHERE employee.name=?1",
            nativeQuery = true)

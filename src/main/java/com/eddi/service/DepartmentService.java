@@ -1,7 +1,7 @@
 package com.eddi.service;
 
 import com.eddi.model.Department;
-import com.eddi.repository.DepartmentRepo;
+import com.eddi.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +13,9 @@ import java.util.stream.StreamSupport;
 @Service
 public class DepartmentService {
 
-    private final DepartmentRepo departmentRepo;
+    private final DepartmentRepository departmentRepo;
 
-    public DepartmentService(DepartmentRepo departmentRepo) {
+    public DepartmentService(DepartmentRepository departmentRepo) {
         this.departmentRepo = departmentRepo;
     }
 

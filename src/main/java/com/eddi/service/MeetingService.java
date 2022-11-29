@@ -1,7 +1,7 @@
 package com.eddi.service;
 
 import com.eddi.model.Meeting;
-import com.eddi.repository.MeetingRepo;
+import com.eddi.repository.MeetingRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -13,9 +13,9 @@ import java.util.stream.StreamSupport;
 @Service
 public class MeetingService {
 
-    private final MeetingRepo meetingRepo;
+    private final MeetingRepository meetingRepo;
 
-    public MeetingService(MeetingRepo meetingRepo) {
+    public MeetingService(MeetingRepository meetingRepo) {
         this.meetingRepo = meetingRepo;
     }
 

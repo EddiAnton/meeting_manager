@@ -2,7 +2,7 @@ package com.eddi.security;
 
 import com.eddi.converter.UserConverter;
 import com.eddi.model.Employee;
-import com.eddi.repository.EmployeeRepo;
+import com.eddi.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserConverter userConverter;
-    private final EmployeeRepo employeeRepo;
+    private final EmployeeRepository employeeRepo;
 
     @Autowired
-    public UserDetailsServiceImpl(EmployeeRepo employeeRepo, UserConverter userConverter) {
+    public UserDetailsServiceImpl(EmployeeRepository employeeRepo, UserConverter userConverter) {
         this.employeeRepo = employeeRepo;
         this.userConverter = userConverter;
     }

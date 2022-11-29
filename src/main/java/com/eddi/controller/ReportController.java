@@ -25,7 +25,7 @@ public class ReportController {
 
     @RequestMapping(value = "/create_report")
     @PreAuthorize("hasAuthority('report.create')")
-    public String createReport(Model model) {
+    public String viewReport(Model model) {
         model.addAttribute("report", new Report());
         model.addAttribute("employees", employeeService.getAllEmployee());
         return "/create_report";
@@ -33,7 +33,7 @@ public class ReportController {
 
     @RequestMapping(value = "/create_report/submit", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('report.create')")
-    public String submitReport(@ModelAttribute Report report, Model model) {
+    public String createReport(@ModelAttribute Report report, Model model) {
         reportService.saveReport(report);
         model.addAttribute("reports", reportService.getAllReport());
         return "/view_report_list";
@@ -41,14 +41,14 @@ public class ReportController {
 
     @RequestMapping(value = "/view_report_list", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('report.read')")
-    public String viewReportList(Model model) {
+    public String getReportList(Model model) {
         model.addAttribute("reports", reportService.getAllReport());
         return "/view_report_list";
     }
 
     @RequestMapping(value = "/view_report_list/submit", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('report.read')")
-    public String viewContent(@RequestParam("reportId") String reportId, Model model) {
+    public String getContent(@RequestParam("reportId") String reportId, Model model) {
         model.addAttribute("report", reportService.getReportById(reportId));
         return "/view_report_content";
     }

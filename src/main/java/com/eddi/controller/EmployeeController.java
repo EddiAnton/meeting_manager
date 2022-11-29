@@ -24,7 +24,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/create_employee")
     @PreAuthorize("hasAuthority('employee.create')")
-    public String createEmployee(Model model) {
+    public String viewEmployee(Model model) {
         model.addAttribute("employee", new Employee());
         model.addAttribute("departments", departmentService.getAllDepartment());
         return "/create_employee";
@@ -32,7 +32,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/create_employee/submit", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('employee.create')")
-    public String submitEmployee(@ModelAttribute Employee employee, Model model) {
+    public String createEmployee(@ModelAttribute Employee employee, Model model) {
         employeeService.saveEmployee(employee);
         model.addAttribute("employees", employeeService.getAllEmployeeDesc());
         return "/view_employee_list";
@@ -40,7 +40,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/view_employee_list", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('employee.read')")
-    public String viewEmployeeList(Model model) {
+    public String getEmployeeList(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployee());
         return "/view_employee_list";
     }
