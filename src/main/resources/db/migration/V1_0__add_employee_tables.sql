@@ -10,6 +10,10 @@ CREATE TABLE employee
     name VARCHAR(255),
     date_of_birth DATE,
     email VARCHAR(64),
+    login VARCHAR(255),
+    password VARCHAR(255),
+    role VARCHAR(255),
+    status VARCHAR(255),
     department_id INT
 );
 

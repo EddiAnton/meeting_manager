@@ -9,51 +9,43 @@
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Meeting Manager</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Менеджер собраний - Администрирование приложения</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="/index">Home</a>
+                    <a class="nav-link" href="/index/create_department">Подразделения</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_department">New department</a>
+                    <a class="nav-link" href="/index/create_employee">Сотрудники</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_employee">New employee</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/index/create_report">New report</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/index/create_meeting">New meeting</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/index/search_meeting">Search meeting</a>
+                    <a class="nav-link" href="/index">Выход</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="header">
-        <h4>Departments</h4>
+        <h4>Подразделения</h4>
     </div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Department ID</th>
-            <th>Department name</th>
+            <th>Идентификатор</th>
+            <th>Наименование подразделения</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="department: ${departments}">
-            <td th:text="${department.id}"/>
-            <td th:text="${department.departmentName}"/>
+            <td th:text="${department.id}"></td>
+            <td th:text="${department.departmentName}"></td>
         </tr>
         </tbody>
     </table>
-    <a class="btn btn-dark" href="/index/create_department">Return</a>
+    <a class="btn btn-dark" href="/index/create_department">Возврат</a>
     <div class="footer">
         <hr>
         <p>All rights reserved &copy;&nbsp;2022</p>

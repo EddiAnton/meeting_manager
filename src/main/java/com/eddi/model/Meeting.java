@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,6 +52,22 @@ public class Meeting {
     private List<Employee> employees;
 
     public Meeting() {}
+
+    public Meeting(Integer id,
+                   Date dateSpending,
+                   String topic,
+                   Department department,
+                   Employee organizedEmployee,
+                   Report report,
+                   List<Employee> employees) {
+        this.id = id;
+        this.dateSpending = dateSpending;
+        this.topic = topic;
+        this.department = department;
+        this.organizedEmployee = organizedEmployee;
+        this.report = report;
+        this.employees = employees;
+    }
 
     public Integer getId() {
         return id;

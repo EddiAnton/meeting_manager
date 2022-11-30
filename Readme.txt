@@ -26,11 +26,12 @@ password - your password
 
 The application is designed to work with the gmail.com mail server.
 
+Login: ADMIN
+Pass: 123
+hashPass: $2a$12$KJ0s7xIMu1ZtznjKuuopIuReSJvVJinKUKs60Y7c/0mz9Chf0IUry
+
 To run the application on your local machine, enter the address
 (http: // localhost: 8080 / index) in the search bar.
 
 The first version of the application can be viewed at:
 https://meeting-manager-2-0.herokuapp.com/index
-
-
-

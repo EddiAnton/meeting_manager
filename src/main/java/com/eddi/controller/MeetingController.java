@@ -1,14 +1,12 @@
 package com.eddi.controller;
 
-import com.eddi.model.Department;
-import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
-import com.eddi.model.Report;
 import com.eddi.service.DepartmentService;
 import com.eddi.service.EmailService;
 import com.eddi.service.EmployeeService;
 import com.eddi.service.MeetingService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.eddi.service.ReportService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,19 +19,21 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/index")
-public class MeetingManagerController {
+public class MeetingController {
 
-    @Autowired
-    private MeetingService meetingService;
+    private final MeetingService meetingService;
+    private final EmployeeService employeeService;
+    private final DepartmentService departmentService;
+    private final ReportService reportService;
+    private final EmailService emailService;
 
-    @Autowired
-    private EmployeeService employeeService;
-
-    @Autowired
-    private DepartmentService departmentService;
-
-    @Autowired
-    private EmailService emailService;
+    public MeetingController(MeetingService meetingService, EmployeeService employeeService, DepartmentService departmentService, ReportService reportService, EmailService emailService) {
+        this.meetingService = meetingService;
+        this.employeeService = employeeService;
+        this.departmentService = departmentService;
+        this.reportService = reportService;
+        this.emailService = emailService;
+    }
 
     @RequestMapping
     public String getLastMeetings(Model model) {
@@ -43,14 +43,22 @@ public class MeetingManagerController {
         return "/index";
     }
 
+    @RequestMapping(value = "/administration")
+    @PreAuthorize("hasAuthority('admin.view')")
+    public String getAdministration() {
+        return "/administration";
+    }
+
     @RequestMapping(value = "/search_meeting")
-    public String mainPage(Model model) {
+    @PreAuthorize("hasAuthority('meeting.read')")
+    public String searchPage(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
         return "/search_meeting";
     }
 
     @RequestMapping(value = "/search_meeting/submit", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('meeting.read')")
     public String search(@RequestParam("topic") String topic,
                          @RequestParam("participant") String participant,
                          @RequestParam("fromDate") String fromDate,
@@ -87,7 +95,8 @@ public class MeetingManagerController {
         return "/view_meeting_list";
     }
 
-    @RequestMapping(value = "/view_meeting_list")
+    @RequestMapping(value = "/view_meeting_list", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('meeting.read')")
     public String getAllMeetings(Model model) {
         model.addAttribute("meetings", meetingService.getAllMeeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
@@ -96,6 +105,7 @@ public class MeetingManagerController {
     }
 
     @RequestMapping(value = "/view_meeting_list/submit", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('meeting.read')")
     public String getAllMeetingEmployees(@RequestParam("meetingId") String meetingId, Model model) {
         model.addAttribute("participants", employeeService.findByMeetingAllEmployees(meetingId));
         model.addAttribute("departments", departmentService.getAllDepartment());
@@ -103,16 +113,18 @@ public class MeetingManagerController {
     }
 
     @RequestMapping(value = "/create_meeting")
-    public String createPage(Model model) {
+    @PreAuthorize("hasAuthority('meeting.create')")
+    public String viewMeeting(Model model) {
         model.addAttribute("meeting", new Meeting());
         model.addAttribute("employees", employeeService.getAllEmployee());
         model.addAttribute("departments", departmentService.getAllDepartment());
-        model.addAttribute("reports", meetingService.getAllReport());
+        model.addAttribute("reports", reportService.getAllReport());
         return "/create_meeting";
     }
 
     @RequestMapping(value = "/create_meeting/submit", method = RequestMethod.POST)
-    public String submitMeeting(@ModelAttribute Meeting meeting) {
+    @PreAuthorize("hasAuthority('meeting.create')")
+    public String createMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
 
 //        TODO: не проходит авторизация, ошибка пользователя и пароля
@@ -121,73 +133,6 @@ public class MeetingManagerController {
 //            String toEmail = participant.getEmail();
 //            emailService.sendMail(toEmail, "New meeting", "You have a new meeting scheduled.");
 //        }
-
         return "redirect:../";
     }
-
-    @RequestMapping(value = "/create_report")
-    public String createReport(Model model) {
-        model.addAttribute("report", new Report());
-        model.addAttribute("employees", employeeService.getAllEmployee());
-        return "/create_report";
-    }
-
-    @RequestMapping(value = "/create_report/submit", method = RequestMethod.POST)
-    public String submitReport(@ModelAttribute Report report, Model model) {
-        meetingService.saveReport(report);
-        model.addAttribute("reports", meetingService.getAllReport());
-        return "/view_report_list";
-    }
-
-    @RequestMapping(value = "/view_report_list", method = RequestMethod.GET)
-    public String viewReportList(Model model) {
-        model.addAttribute("reports", meetingService.getAllReport());
-        return "/view_report_list";
-    }
-
-    @RequestMapping(value = "/view_report_list/submit", method = RequestMethod.POST)
-    public String viewContent(@RequestParam("reportId") String reportId, Model model) {
-        model.addAttribute("report", meetingService.getReportById(reportId));
-        return "/view_report_content";
-    }
-
-    @RequestMapping(value = "/create_employee")
-    public String createEmployee(Model model) {
-        model.addAttribute("employee", new Employee());
-        model.addAttribute("departments", departmentService.getAllDepartment());
-        return "/create_employee";
-    }
-
-    @RequestMapping(value = "/create_employee/submit", method = RequestMethod.POST)
-    public String submitEmployee(@ModelAttribute Employee employee, Model model) {
-        employeeService.saveEmployee(employee);
-        model.addAttribute("employees", employeeService.getAllEmployeeDesc());
-        return "/view_employee_list";
-    }
-
-    @RequestMapping(value = "/view_employee_list", method = RequestMethod.GET)
-    public String viewEmployeeList(Model model) {
-        model.addAttribute("employees", employeeService.getAllEmployee());
-        return "/view_employee_list";
-    }
-
-    @RequestMapping(value = "/create_department")
-    public String createDepartment(Model model) {
-        model.addAttribute("department", new Department());
-        return "/create_department";
-    }
-
-    @RequestMapping(value = "/create_department/submit", method = RequestMethod.POST)
-    public String submitDepartment(@ModelAttribute Department department, Model model) {
-        departmentService.saveDepartment(department);
-        model.addAttribute("departments", departmentService.getAllDepartment());
-        return "/view_department_list";
-    }
-
-    @RequestMapping(value = "/view_department_list", method = RequestMethod.GET)
-    public String viewDepartmentList(Model model) {
-        model.addAttribute("departments", departmentService.getAllDepartment());
-        return "/view_department_list";
-    }
 }
-

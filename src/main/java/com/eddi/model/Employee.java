@@ -1,15 +1,6 @@
 package com.eddi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,6 +25,20 @@ public class Employee {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password")
+    private String password;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
+
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
@@ -47,6 +52,26 @@ public class Employee {
     private List<Meeting> meetings = new java.util.ArrayList<>();
 
     public Employee() {}
+
+    public Employee(Integer id,
+                    String name,
+                    Date dateOfBirth,
+                    String email,
+                    String login,
+                    String password,
+                    Role role,
+                    Status status,
+                    Department department) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.status = status;
+        this.department = department;
+    }
 
     public Integer getId() {
         return id;
@@ -85,6 +110,38 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Department getDepartment() {

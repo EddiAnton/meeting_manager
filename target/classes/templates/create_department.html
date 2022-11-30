@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Meeting Manager</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Менеджер собраний</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Менеджер собраний - Администрирование приложения</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="/index">Журнал</a>
-                </li>
-                <li class="nav-item active">
                     <a class="nav-link" href="/index/create_department">Подразделения</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/index/create_employee">Сотрудники</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_report">Доклады</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/index/create_meeting">Новое собрание</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/index/search_meeting">Поиск</a>
+                    <a class="nav-link" href="/index">Выход</a>
                 </li>
             </ul>
         </div>
@@ -42,7 +35,7 @@
     <div class="base-form">
         <form action="#" th:action="@{/index/create_department/submit}" th:object="${department}" method="POST">
             <p>Наименование подразделения: <input type="text" size="80" placeholder="Введите наименование подразделения"
-                                           id="department_name" th:field="*{departmentName}"></p>
+                                                  id="department_name" th:field="*{departmentName}"></p>
             <input class="btn btn-dark" type="submit" value="Сохранить">
             <input class="btn btn-dark" type="reset" value="Отмена">
             <a class="btn btn-dark" href="/index/view_department_list">Показать все</a>

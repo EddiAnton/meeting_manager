@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Meeting Manager</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Менеджер собраний</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index">Журнал</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index/create_department">Подразделения</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index/create_employee">Сотрудники</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index/create_report">Доклады</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index/create_meeting">Новое собрание</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/index/search_meeting">Поиск</a>
-                    </li>
-                </ul>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Менеджер собраний</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto justify-content-end">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Журнал</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index/create_report">Доклады</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index/create_meeting">Новое собрание</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index/search_meeting">Поиск</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index/administration">Администрирование</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="header">
+        <h4>Поиск собрания</h4>
+    </div>
+    <div class="base-form">
+        <form action="#" th:action="@{/index/search_meeting/submit}" method="POST">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <p>Тема: <input type="text" name="topic" size="40" placeholder="Введите тему собрания"></p>
+                    </div>
+                    <div class="col">
+                        <p>Подразделение: <input type="text" name="departmentName" size="40"
+                                                 placeholder="Введите наименование Подразделения"></p>
+                    </div>
+                </div>
             </div>
-        </nav>
-        <div class="header">
-          <h4>Поиск собрания</h4>
-        </div>
-        <div class="base-form">
-            <form action="#" th:action="@{/index/search_meeting/submit}" method="POST">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            <p>Тема: <input type="text" name="topic" size="40" placeholder="Введите тему собрания"></p>
-                        </div>
-                        <div class="col">
-                            <p>Подразделение: <input type="text" name="departmentName" size="40" placeholder="Введите наименование Подразделения"></p>
-                        </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label>Дата с:</label>
+                        <input type="date" name="fromDate" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label>Дата до:</label>
+                        <input type="date" name="toDate" class="form-control">
                     </div>
                 </div>
-                <div class="form-group">
-                   <div class="row">
-                        <div class="col">
-                            <label>Дата с:</label>
-                            <input type="date" name="fromDate" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>Дата до:</label>
-                            <input type="date" name="toDate" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <p>С участием: <input type="text" name="participant" size="30" placeholder="Введите полное имя участника"></p>
-                <br>
-                <input class="btn btn-dark" type="submit" value="Найти">
-                <a class="btn btn-dark" href="/index/view_meeting_list">Показать все</a>
-            </form>
-        </div>
-        <div class="footer">
-            <hr>
-            <p>All rights reserved &copy;&nbsp;2022</p>
-        </div>
-    </div>     
+            </div>
+            <p>С участием: <input type="text" name="participant" size="30" placeholder="Введите полное имя участника">
+            </p>
+            <br>
+            <input class="btn btn-dark" type="submit" value="Найти">
+            <a class="btn btn-dark" href="/index/view_meeting_list">Показать все</a>
+        </form>
+    </div>
+    <div class="footer">
+        <hr>
+        <p>All rights reserved &copy;&nbsp;2022</p>
+    </div>
+</div>
 </body>
 </html>
