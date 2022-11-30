@@ -1,4 +1,4 @@
-package com.eddi.unit.model;
+package com.eddi.unit;
 
 import org.junit.jupiter.api.Test;
 
