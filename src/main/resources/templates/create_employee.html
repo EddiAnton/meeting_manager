@@ -9,53 +9,53 @@
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Meeting Manager</a>
+        <a class="navbar-brand" href="#">Менеджер собраний</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="/index">Home</a>
+                    <a class="nav-link" href="/index">Журнал</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_department">New department</a>
+                    <a class="nav-link" href="/index/create_department">Подразделения</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/index/create_employee">New employee</a>
+                    <a class="nav-link" href="/index/create_employee">Сотрудники</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_report">New report</a>
+                    <a class="nav-link" href="/index/create_report">Доклады</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/create_meeting">New meeting</a>
+                    <a class="nav-link" href="/index/create_meeting">Новое собрание</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/index/search_meeting">Search meeting</a>
+                    <a class="nav-link" href="/index/search_meeting">Поиск</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="header">
-        <h4>Employee data</h4>
+        <h4>Создать нового сотрудника</h4>
     </div>
     <div class="base-form">
         <form action="#" th:action="@{/index/create_employee/submit}" th:object="${employee}" method="POST">
-            <p>Employee name: <input type="text" size="80" placeholder="Enter first and last name"
+            <p>Полное имя сотрудника: <input type="text" size="80" placeholder="Введите ФИО"
                                     id="name" th:field="*{name}"></p>
             <div class="form-group">
-                <label>Date of Birth:</label>
+                <label>Дата рождения:</label>
                 <input type="date" size="40" class="form-control" id="date_of_birth" th:field="*{dateOfBirth}">
             </div>
-            <p>Email: <input type="text" size="80" placeholder="Enter email"
+            <p>Email: <input type="text" size="80" placeholder="Введите email"
                                      id="email" th:field="*{email}"></p>
-            <p>Department: <select class="browser-default custom-select" id="department_id" th:field="*{department}">
+            <p>Подразделение: <select class="browser-default custom-select" id="department_id" th:field="*{department}">
                 <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
             </select>
             </p>
-            <input class="btn btn-dark" type="submit" value="Save">
-            <input class="btn btn-dark" type="reset" value="Cancel">
-            <a class="btn btn-dark" href="/index/view_employee_list">Show all</a>
+            <input class="btn btn-dark" type="submit" value="Сохранить">
+            <input class="btn btn-dark" type="reset" value="Отмена">
+            <a class="btn btn-dark" href="/index/view_employee_list">Показать все</a>
         </form>
     </div>
     <div class="footer">

@@ -9,57 +9,57 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Meeting Manager</a>
+            <a class="navbar-brand" href="#">Менеджер собраний</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="/index">Home</a>
+                        <a class="nav-link" href="/index">Журнал</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/create_department">New department</a>
+                        <a class="nav-link" href="/index/create_department">Подразделения</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/create_employee">New employee</a>
+                        <a class="nav-link" href="/index/create_employee">Сотрудники</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/create_report">New report</a>
+                        <a class="nav-link" href="/index/create_report">Доклады</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/index/create_meeting">New meeting</a>
+                        <a class="nav-link active" href="/index/create_meeting">Новое собрание</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index/search_meeting">Search meeting</a>
+                        <a class="nav-link" href="/index/search_meeting">Поиск</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="header">
-          <h4>Meeting data</h4>
+          <h4>Новое собрание</h4>
         </div>
         <div class="base-form">
             <form action="#" th:action="@{/index/create_meeting/submit}" th:object="${meeting}" method="POST">
-                <p>Theme: <input type="text" size="40" placeholder="Enter meeting subject"
+                <p>Тема: <input type="text" size="40" placeholder="Введите тему собрания"
                                 id="topic" th:field="*{topic}"></p>
                 <div class="form-group">
-                    <label>Date Time spending</label>
+                    <label>Дата время проведения</label>
                     <input type="date" size="40" class="form-control" id="date_spending" th:field="*{dateSpending}">
                 </div>
-                <p>Department: <select class="browser-default custom-select"
+                <p>Подразделение: <select class="browser-default custom-select"
                                          id="organized_department_id"
                                          th:field="*{department}">
                     <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.departmentName}"/>
                 </select>
                 </p>
-                <p>Responsible person: <select class="browser-default custom-select"
+                <p>Организатор: <select class="browser-default custom-select"
                                           id="organized_employee_id"
                                           th:field="*{organizedEmployee}">
                     <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"/>
                 </select>
                 </p>
-                <p>Mark the list of participants:</p>
+                <p>Отметить участников:</p>
                     <table class="table table-striped" th:field="*{employees}">
                         <tr th:each="employee, stat: ${employees}">
                             <td>
@@ -73,10 +73,10 @@
                             </td>
                         </tr>
                     </table>
-                <p>Information about the report delivered at the meeting:</p>
+                <p>Информация о докладе представляемом на собрании:</p>
                 <div class="form-row align-items-center">
                     <div class="col-sm-3 my-1">
-                        <p>Theme of the report: <select class="browser-default custom-select"
+                        <p>Тема доклада: <select class="browser-default custom-select"
                                                   id="report_id"
                                                   th:field="*{report}">
                             <option th:each="report : ${reports}" th:value="${report.id}" th:text="${report.title}"/>
@@ -84,12 +84,12 @@
                         </p>
                     </div>
                     <div class="col-sm-3 my-1">
-                        <a class="btn btn-dark" href="/index/create_report">Add new report</a>
+                        <a class="btn btn-dark" href="/index/create_report">Создать доклад</a>
                     </div>
                 </div>
                 <br>
-                <input class="btn btn-dark" type="submit" value="Save">
-                <input class="btn btn-dark" type="reset" value="Cancel">
+                <input class="btn btn-dark" type="submit" value="Сохранить">
+                <input class="btn btn-dark" type="reset" value="Отмена">
             </form>
         </div>
         <div class="footer">
