@@ -23,7 +23,7 @@ public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "date_spending")
     private Date dateSpending;
@@ -53,7 +53,7 @@ public class Meeting {
 
     public Meeting() {}
 
-    public Meeting(Integer id,
+    public Meeting(Long id,
                    Date dateSpending,
                    String topic,
                    Department department,
@@ -69,11 +69,11 @@ public class Meeting {
         this.employees = employees;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer meetingID) {
+    public void setId(Long meetingID) {
         this.id = meetingID;
     }
 

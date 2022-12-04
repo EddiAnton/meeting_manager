@@ -17,7 +17,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/index">Журнал</a>
                 </li>
                 <li class="nav-item">
@@ -26,13 +26,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/index/create_meeting">Новое собрание</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/index/search_meeting">Поиск</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/index/administration">Администрирование</a>
                 </li>
             </ul>
+            <form class="nav-link d-flex" th:action="@{/logout}" method="post">
+                <input type="submit" value="Выйти из системы"/>
+            </form>
         </div>
     </nav>
     <div class="header">

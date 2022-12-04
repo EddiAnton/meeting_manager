@@ -34,7 +34,7 @@ public class ReportService {
     }
 
     public Report getReportById(String reportId) {
-        Integer id = Integer.parseInt(reportId);
+        Long id = Long.parseLong(reportId);
         return reportRepo.findReportById(id);
     }
 }
