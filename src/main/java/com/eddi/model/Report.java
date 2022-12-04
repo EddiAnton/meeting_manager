@@ -19,7 +19,7 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -37,7 +37,7 @@ public class Report {
 
     public Report() {}
 
-    public Report(Integer id,
+    public Report(Long id,
                   String title,
                   Employee author,
                   String content,
@@ -49,11 +49,11 @@ public class Report {
         this.dateCreated = dateCreated;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

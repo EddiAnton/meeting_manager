@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     Optional<Employee> findByLogin(String login);
 
     @Query(value = "SELECT * FROM employee WHERE id IN (SELECT employee_id FROM participants WHERE meeting_id=?1)",
             nativeQuery = true)
-    List<Employee> findByMeeting(Integer id);
+    List<Employee> findByMeeting(Long id);
 
     @Query(value = "SELECT * FROM employee ORDER BY id DESC;",
             nativeQuery = true)

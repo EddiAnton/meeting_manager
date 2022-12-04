@@ -17,7 +17,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/index/create_department">Подразделения</a>
                 </li>
                 <li class="nav-item">
@@ -27,6 +27,9 @@
                     <a class="nav-link" href="/index">Выход</a>
                 </li>
             </ul>
+            <form class="nav-link d-flex" th:action="@{/logout}" method="post">
+                <input type="submit" value="Выйти из системы"/>
+            </form>
         </div>
     </nav>
     <div class="header">
