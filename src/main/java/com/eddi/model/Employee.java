@@ -14,7 +14,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -53,7 +53,7 @@ public class Employee {
 
     public Employee() {}
 
-    public Employee(Integer id,
+    public Employee(Long id,
                     String name,
                     Date dateOfBirth,
                     String email,
@@ -73,11 +73,11 @@ public class Employee {
         this.department = department;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

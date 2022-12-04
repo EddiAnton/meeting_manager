@@ -25,7 +25,7 @@ public class EmployeeService {
     }
 
     public List<Employee> findByMeetingAllEmployees(String meetingId) {
-        Integer id = Integer.parseInt(meetingId);
+        Long id = Long.parseLong(meetingId);
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(employeeRepo.findByMeeting(id).iterator(),
                         Spliterator.NONNULL), false)
