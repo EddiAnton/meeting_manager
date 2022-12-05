@@ -7,28 +7,28 @@
     <title>Meeting Manager</title>
 </head>
 <body>
-<div th:if="${param.error}">
-    Invalid username and password.
+<div class="col-md-offset-3 col-md-12" align = "center">
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+            <label class="form-label"></label>
+            <input type="text" name="username" class="form-control col-sm-3" id="inputLogin"
+                   aria-describedby="loginHelp" placeholder="Имя пользователя">
+            <div id="loginHelp" class="form-text"></div>
+        </div>
+        <div>
+            <label class="form-label"></label>
+            <input type="password" name="password" class="form-control col-sm-3" id="inputPassword"
+                   aria-describedby="passHelp" placeholder="Пароль">
+            <div id="passHelp" class="form-text"></div>
+        </div>
+        <div><input class="btn btn-dark" type="submit" value="Войти"/></div>
+    </form>
 </div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
-    <div class="mb-3">
-        <label class="form-label"> User Name : </label>
-        <input type="text" name="username" class="form-control col-sm-3" id="inputLogin" aria-describedby="loginHelp">
-        <div id="loginHelp" class="form-text">We'll never share your login with anyone else.</div>
-    </div>
-    <div>
-        <label class="form-label"> Password: </label>
-        <input type="password" name="password" class="form-control col-sm-3" id="inputPassword" aria-describedby="passHelp">
-        <div id="passHelp" class="form-text">We'll never share your password with anyone else.</div>
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="check1">
-        <label class="form-check-label" for="check1">Запомнить меня</label>
-    </div>
-    <div><input class="btn btn-dark" type="submit" value="Войти"/></div>
-</form>
 </body>
 </html>
