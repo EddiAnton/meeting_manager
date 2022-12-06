@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.eddi</groupId>
     <artifactId>meeting_manager</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>2.0-SNAPSHOT</version>
     <properties>
         <java.version>1.8</java.version>
