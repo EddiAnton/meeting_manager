@@ -1,11 +1,13 @@
 package com.eddi.controller;
 
+import com.eddi.model.Employee;
 import com.eddi.model.Meeting;
 import com.eddi.service.DepartmentService;
 import com.eddi.service.EmailService;
 import com.eddi.service.EmployeeService;
 import com.eddi.service.MeetingService;
 import com.eddi.service.ReportService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Log4j2
 @Controller
 @RequestMapping("/index")
 public class MeetingController {
@@ -27,7 +29,11 @@ public class MeetingController {
     private final ReportService reportService;
     private final EmailService emailService;
 
-    public MeetingController(MeetingService meetingService, EmployeeService employeeService, DepartmentService departmentService, ReportService reportService, EmailService emailService) {
+    public MeetingController(MeetingService meetingService,
+                             EmployeeService employeeService,
+                             DepartmentService departmentService,
+                             ReportService reportService,
+                             EmailService emailService) {
         this.meetingService = meetingService;
         this.employeeService = employeeService;
         this.departmentService = departmentService;
@@ -127,12 +133,16 @@ public class MeetingController {
     public String createMeeting(@ModelAttribute Meeting meeting) {
         meetingService.saveMeeting(meeting);
 
-//        TODO: не проходит авторизация, ошибка пользователя и пароля
-//        List<Employee> participants = new ArrayList<>(meeting.getEmployees());
-//        for(Employee participant: participants) {
-//            String toEmail = participant.getEmail();
-//            emailService.sendMail(toEmail, "New meeting", "You have a new meeting scheduled.");
-//        }
+        List<Employee> participants = new ArrayList<>(meeting.getEmployees());
+        for(Employee participant: participants) {
+            String toEmail = participant.getEmail();
+            try {
+                emailService.sendMail(toEmail, "New meeting", "You have a new meeting scheduled.");
+            }catch (Exception e) {
+                log.error("Unexpected error. Message not delivered");
+                e.printStackTrace();
+            }
+        }
         return "redirect:../";
     }
 }

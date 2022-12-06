@@ -82,7 +82,8 @@
                     <p>Тема доклада: <select class="browser-default custom-select"
                                              id="report_id"
                                              th:field="*{report}">
-                        <option th:each="report : ${reports}" th:value="${report.id}" th:text="${report.title}"></option>
+                        <option th:each="report : ${reports}" th:value="${report.id}"
+                                th:text="${report.title}"></option>
                     </select>
                     </p>
                 </div>

@@ -8,6 +8,9 @@
 </head>
 <body>
 <div class="container">
+    <div th:if="${param.error}">
+        У вас недостаточно прав для данного действия.
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Менеджер собраний</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
